@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.1</TargetFramework>
+    <AssemblyName>Tampleworks.WindowsApplicationBlock.Demo.ApplicationLogic</AssemblyName>
+    <RootNamespace>Tampleworks.WindowsApplicationBlock.Demo.ApplicationLogic</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="ReportGeneration\ReportGenerationAgent.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ApplicationLogicAbstractions\ApplicationLogicAbstractions.csproj" />
+    <ProjectReference Include="..\Tampleworks.WindowsApplicationBlock.ApplicationLogicAbstractions\ApplicationLogicAbstractions.csproj" />
+    <ProjectReference Include="..\Tampleworks.WindowsApplicationBlock.ViewModel\Tampleworks.WindowsApplicationBlock.ApplicationLogicAbstractions.csproj" />
+  </ItemGroup>
+
+</Project>

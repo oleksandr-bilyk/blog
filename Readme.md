@@ -26,5 +26,5 @@ Service Fabric is an incredibly powerful PaaS that, despite not being polished b
 This article describes HttpClientFactory best practices. Ignoring network connection allocation recommendations causes networking issues on Azure App Service and elsewhere.
 
 ### 2017
-* Jun 4, 2017 [Windows Application Block](https://github.com/oleksandr-bilyk/WindowsApplicationBlock) 
-My first open-source repository and article. In 2017 I was prepared for MCSD Windows Application Builder certification and after 10+ years of desktop development was very excited by Windows 10 UWP platform. Describes deep analysis of lifecycle, dependency injection, navigation. The article was attempt to write a solid Application Block for UWP MVVM fancy scenarios, dependency injection with .NET Native (without DI containers). 
+* Jun 4, 2017 [Windows Application Block](./posts/2017/2017-06-04-windows-application-block/index.md)
+My first open-source repository and article. In 2017, I was preparing for the MCSD Windows Application Builder certification and, after more than ten years of desktop development, was very excited about the Windows 10 UWP platform. The article provides an in-depth analysis of the application lifecycle, dependency injection, and navigation. It was an attempt to build a solid application block for advanced UWP MVVM scenarios, including dependency injection with .NET Native without using DI containers.
