@@ -4,25 +4,25 @@ My name is Alex Bilyk, and this is my professional blog. Here, I write about pro
 
 My professional [book list at Goodreads](https://www.goodreads.com/review/list/58286705-oleksandr-bilyk?ref=nav_mybooks&shelf=read)
 
-## Archive
+## Posts
 ## 2021
 
-* Dec 21, 2021 [Semantic Versioning](./Archive/2021/SemanticVersioning.md)
+* Dec 21, 2021 [Semantic Versioning](./posts/2021/2021-12-21-semantic-versioning/index.md)
 Semantic Versioning is recommended as the default strategy for software product versioning in any software company. I have compiled a learning path for .NET developers.
 
-* Oct 4, 2021 [Secret Arch](./Archive/2021/SecretArch/Readme.md)
+* Oct 4, 2021 [Secret Arch](./posts/2021/2021-10-04-secret-arch/index.md)
 Azure Key Vault is a service provided by Azure for securely storing secrets. Imagine a scenario where we need to remove secrets after expiration, a feature that Key Vault does not offer. Designing a Key Vault decorator service that supplements these missing features would be highly beneficial.
 
-* Oct 2, 2021 [Explicit Contract Culture](./Archive/2021/ExplicitContractCulture/Readme.md)
+* Oct 2, 2021 [Explicit Contract Culture](./posts/2021/2021-10-02-explicit-contract-culture/index.md)
 When integrating products and services, it is advantageous to have explicit data contracts rather than implicit ones. Dedicating time and effort to extract explicit data contracts is a worthwhile investment for maintainability.
 
-* Feb 13, 2021 [F# Lazy Expiration](./Archive/2021/FSharpLazyExpiration/Readme.md)
+* Feb 13, 2021 [F# Lazy Expiration](./posts/2021/2021-02-13-fsharp-lazy-expiration/index.md)
 This article compares OOP and functional approaches to one resource-usage problem.
 
-* Jun 30, 2021 [From Service Fabric to App Service](./Archive/2021/FromServiceFabricToAppService/Readme.md)
+* Jun 30, 2021 [From Service Fabric to App Service](./posts/2021/2021-06-30-from-service-fabric-to-app-service/index.md)
 Service Fabric is an incredibly powerful PaaS that, despite not being polished by the open-source community, offers a robust experience. The article narrates the journey of migrating several microservices from Service Fabric to App Service, highlighting the importance of the dependency inversion principle in creating platform-agnostic solutions.
 
-* Feb 14, 2021 [Http Client Factory](./Archive/2021/AppServiceHttpClientFactory/Readme.md)
+* Feb 14, 2021 [Http Client Factory](./posts/2021/2021-02-14-http-client-factory/index.md)
 This article describes HttpClientFactory best practices. Ignoring network connection allocation recommendations causes networking issues on Azure App Service and elsewhere.
 
 ### 2017
