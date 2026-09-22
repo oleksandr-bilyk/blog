@@ -245,6 +245,6 @@ Construction X509Certificate2 from byte array and store it only in process memor
 We used WS-Federation authentication. AppService has header size limit to prevent DOS attacks. To avoid header overload, we store user groups claims in session. `WsFederationOptions.Events.OnTicketReceived` allows to customize `ClaimsIdentity`. 
 
 ## SNAT ports limit
-Read [Azure AppService HttpClientFactory - use cached but fresh http message handlers](./../AppServiceHttpClientFactory/Readme.md) 
+Read [Azure AppService HttpClientFactory - use cached but fresh http message handlers](../2021-02-14-http-client-factory/index.md)
 
 # THE END - No it is just the beginning. Next stop is Containers :)
