@@ -4,7 +4,12 @@ My name is Alex Bilyk, and this is my professional blog. Here, I write about pro
 
 My professional [book list at Goodreads](https://www.goodreads.com/review/list/58286705-oleksandr-bilyk?ref=nav_mybooks&shelf=read)
 
-## Posts
+## Pinned Posts
+
+* [From Service Fabric to App Service](./posts/2021/2021-06-30-from-service-fabric-to-app-service/index.md)
+* [Make Your Own Neural Network with F#](./posts/2017/2017-12-14-make-your-own-neural-network-with-fsharp/index.md)
+* [Windows Application Block](./posts/2017/2017-06-04-windows-application-block/index.md)
+
 ## 2021
 
 * Dec 21, 2021 [Semantic Versioning](./posts/2021/2021-12-21-semantic-versioning/index.md)
@@ -26,5 +31,8 @@ Service Fabric is an incredibly powerful PaaS that, despite not being polished b
 This article describes HttpClientFactory best practices. Ignoring network connection allocation recommendations causes networking issues on Azure App Service and elsewhere.
 
 ### 2017
+* Dec 14, 2017 [Make Your Own Neural Network with F#](./posts/2017/2017-12-14-make-your-own-neural-network-with-fsharp/index.md)
+This article translates the neural network from Tariq Rashid's *Make Your Own Neural Network* into F#. It explores weight matrices, forward queries, recursive backpropagation, lazy MNIST processing, training epochs, image augmentation, recognition performance, and reverse queries that generate digit pareidolia.
+
 * Jun 4, 2017 [Windows Application Block](./posts/2017/2017-06-04-windows-application-block/index.md)
 My first open-source repository and article. In 2017, I was preparing for the MCSD Windows Application Builder certification and, after more than ten years of desktop development, was very excited about the Windows 10 UWP platform. The article provides an in-depth analysis of the application lifecycle, dependency injection, and navigation. It was an attempt to build a solid application block for advanced UWP MVVM scenarios, including dependency injection with .NET Native without using DI containers.
