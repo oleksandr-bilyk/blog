@@ -28,10 +28,68 @@ fixed-layout comparison equipped reviewers to understand the essence of a
 
 ## Interactive dependency graphs
 
-- [Monolith dependency graph](./Monolith-tangled-tree.html)
-- [Original Subservice dependency graph](./Subservice-original-tangled-tree.html)
-- [Extracted Subservice dependency graph](./Subservice-destination-tangled-tree.html)
-- [Fixed-layout extraction comparison](./Subservice-dependency-comparison.html)
+### Monolith dependency graph
+
+The complete starting architecture provides the context for understanding which
+capabilities belong to the extracted service.
+
+[Open the Monolith dependency graph in a separate page.](./Monolith-tangled-tree.html)
+
+<iframe
+  src="./Monolith-tangled-tree.html"
+  title="Interactive Monolith dependency graph"
+  style="width: 100%; height: 1000px; border: 0;"
+  sandbox="allow-scripts"
+  allowfullscreen>
+</iframe>
+
+### Original Subservice dependency graph
+
+The original Subservice snapshot retains the broad Monolith shape before
+unrelated capabilities are removed.
+
+[Open the original Subservice dependency graph in a separate page.](./Subservice-original-tangled-tree.html)
+
+<iframe
+  src="./Subservice-original-tangled-tree.html"
+  title="Interactive original Subservice dependency graph"
+  loading="lazy"
+  style="width: 100%; height: 1000px; border: 0;"
+  sandbox="allow-scripts"
+  allowfullscreen>
+</iframe>
+
+### Extracted Subservice dependency graph
+
+The destination view recomputes the layout for the smaller, focused service and
+shows its final architecture without the removed regions.
+
+[Open the extracted Subservice dependency graph in a separate page.](./Subservice-destination-tangled-tree.html)
+
+<iframe
+  src="./Subservice-destination-tangled-tree.html"
+  title="Interactive extracted Subservice dependency graph"
+  loading="lazy"
+  style="width: 100%; height: 1000px; border: 0;"
+  sandbox="allow-scripts"
+  allowfullscreen>
+</iframe>
+
+### Fixed-layout extraction comparison
+
+The comparison preserves the original node positions while hiding deleted
+nodes, making the retained service visible as a literal architectural subgraph.
+
+[Open the fixed-layout extraction comparison in a separate page.](./Subservice-dependency-comparison.html)
+
+<iframe
+  src="./Subservice-dependency-comparison.html"
+  title="Interactive fixed-layout Subservice extraction comparison"
+  loading="lazy"
+  style="width: 100%; height: 1000px; border: 0;"
+  sandbox="allow-scripts"
+  allowfullscreen>
+</iframe>
 
 ## 1. The review problem
 
