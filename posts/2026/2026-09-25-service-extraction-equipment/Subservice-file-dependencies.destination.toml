@@ -1,0 +1,394 @@
+[files]
+1 = "src/Subservice/Model/ModuleAsterWood.fs"
+2 = "src/Subservice/Model/ModuleAsterValley.fs"
+3 = "src/Subservice/Model/AreaAmberCove/ModuleBrightGrove.fs"
+4 = "src/Subservice/Services/AreaAmberFalcon/ModuleBrightTrail.fs"
+5 = "src/Subservice/Services/AreaAmberFalcon/ModuleBrightStar.fs"
+6 = "src/Subservice/Services/AreaAmberFalcon/ModuleBrightSpring.fs"
+7 = "src/Subservice/Services/AreaAmberFalcon/ModuleCedarAnchor.fs"
+8 = "src/Subservice/Services/AreaAmberFalcon/ModuleBrightWood.fs"
+9 = "src/Subservice/Services/AreaAmberFalcon/ModuleCedarTrail.fs"
+10 = "src/Subservice/Services/AreaAmberFalcon/ModuleBrightOrchid.fs"
+11 = "src/Subservice/Services/AreaAmberFalcon/ModuleCedarComet.fs"
+12 = "src/Subservice/Services/AreaAmberFalcon/ModuleCedarCanyon.fs"
+13 = "src/Subservice/Services/AreaAmberFalcon/ModuleCedarSpring.fs"
+14 = "src/Subservice/Services/AreaAmberFalcon/ModuleCedarBridge.fs"
+15 = "src/Subservice/Services/AreaAmberFalcon/ModuleCedarBrook.fs"
+16 = "src/Subservice/Services/AreaAmberFalcon/AreaAmberForest/ModuleCedarPine.fs"
+17 = "src/Subservice/Services/AreaAmberFalcon/AreaAmberForest/ModuleCedarReef.fs"
+18 = "src/Subservice/Services/AreaAmberFalcon/AreaAmberForest/ModuleCedarSky.fs"
+19 = "src/Subservice/Services/AreaAmberFalcon/AreaAmberForest/ModuleCedarOrchid.fs"
+20 = "src/Subservice/Services/AreaAmberFalcon/AreaAmberForest/ModuleCedarHarbor.fs"
+21 = "src/Subservice/Services/AreaAmberFalcon/AreaAmberForest/ModuleCedarIsland.fs"
+22 = "src/Subservice/Services/AreaAmberFalcon/AreaAmberForest/ModuleCedarHill.fs"
+23 = "src/Subservice/Services/AreaAmberFalcon/AreaAmberForest/ModuleCedarLake.fs"
+24 = "src/Subservice/Services/AreaAmberFalcon/AreaAmberForest/ModuleCedarPeak.fs"
+25 = "src/Subservice/Services/AreaAmberFalcon/AreaAmberForest/ModuleCedarFalcon.fs"
+26 = "src/Subservice/Services/AreaAmberFalcon/AreaAmberForest/ModuleCedarRidge.fs"
+27 = "src/Subservice/Services/AreaAmberFalcon/AreaAmberForest/ModuleCedarForest.fs"
+28 = "src/Subservice/Services/AreaAmberFalcon/AreaAmberForest/ModuleCedarGarden.fs"
+29 = "src/Subservice/Services/AreaAmberFalcon/AreaAmberForest/ModuleCedarGrove.fs"
+30 = "src/Subservice/Services/AreaAmberFalcon/ModuleBrightValley.fs"
+31 = "src/Subservice/Services/AreaAmberFalcon/ModuleCedarSummit.fs"
+32 = "src/Subservice/Services/ModuleCrispGrove.fs"
+33 = "src/Subservice/Services/ModuleCoralSummit.fs"
+34 = "src/Subservice/Services/ModuleDawnOrchid.fs"
+35 = "src/Subservice/Services/ModuleCrispOrchid.fs"
+36 = "src/Subservice/Services/ModuleCoralWave.fs"
+37 = "src/Subservice/Services/ModuleCoralValley.fs"
+38 = "src/Subservice/Services/ModuleCrispAnchor.fs"
+39 = "src/Subservice/Services/AreaAmberHill/ModuleCoralHill.fs"
+40 = "src/Subservice/Services/AreaAmberOrchid/ModuleCrispCanyon.fs"
+41 = "src/Subservice/Services/AreaAmberOrchid/ModuleCrispBrook.fs"
+42 = "src/Subservice/Services/AreaAmberOrchid/ModuleCrispBeacon.fs"
+43 = "src/Subservice/Services/AreaAmberOrchid/ModuleCrispBridge.fs"
+44 = "src/Subservice/Services/AreaAmberPeak/ModuleCrispForest.fs"
+45 = "src/Subservice/Services/AreaAmberPeak/ModuleCrispCove.fs"
+46 = "src/Subservice/Services/AreaAmberPeak/ModuleCrispGarden.fs"
+47 = "src/Subservice/Services/AreaAmberPeak/ModuleCrispComet.fs"
+48 = "src/Subservice/Services/AreaAmberReef/ModuleCrispValley.fs"
+49 = "src/Subservice/Services/AreaAmberReef/ModuleCrispStar.fs"
+50 = "src/Subservice/Services/AreaAmberReef/ModuleDawnFalcon.fs"
+51 = "src/Subservice/Services/AreaAmberReef/ModuleCrispWave.fs"
+52 = "src/Subservice/Services/AreaAmberReef/ModuleCrispSpring.fs"
+53 = "src/Subservice/Services/AreaAmberReef/ModuleDawnGrove.fs"
+54 = "src/Subservice/Services/AreaAmberReef/ModuleDawnBeacon.fs"
+55 = "src/Subservice/Services/AreaAmberReef/ModuleDawnAnchor.fs"
+56 = "src/Subservice/Services/AreaAmberReef/ModuleCrispWood.fs"
+57 = "src/Subservice/Services/AreaAmberReef/ModuleCrispTrail.fs"
+58 = "src/Subservice/Services/AreaAmberReef/ModuleDawnBrook.fs"
+59 = "src/Subservice/Services/AreaAmberReef/ModuleDawnHill.fs"
+60 = "src/Subservice/Services/AreaAmberReef/ModuleDawnHarbor.fs"
+61 = "src/Subservice/Services/AreaAmberReef/ModuleDawnBridge.fs"
+62 = "src/Subservice/Services/AreaAmberReef/ModuleDawnCanyon.fs"
+63 = "src/Subservice/Services/AreaAmberReef/ModuleDawnLake.fs"
+64 = "src/Subservice/Services/AreaAmberReef/ModuleCrispPine.fs"
+65 = "src/Subservice/Services/AreaAmberReef/ModuleCrispReef.fs"
+66 = "src/Subservice/Services/AreaAmberReef/ModuleCrispPeak.fs"
+67 = "src/Subservice/Services/AreaAmberReef/ModuleCrispRidge.fs"
+68 = "src/Subservice/Services/AreaAmberReef/ModuleDawnComet.fs"
+69 = "src/Subservice/Services/AreaAmberReef/ModuleDawnIsland.fs"
+70 = "src/Subservice/Services/AreaAmberReef/ModuleDawnGarden.fs"
+71 = "src/Subservice/Services/AreaAmberReef/ModuleDawnForest.fs"
+72 = "src/Subservice/Services/AreaAmberReef/ModuleDawnCove.fs"
+73 = "src/Subservice/Infrastructure/ModuleAsterSky.fs"
+74 = "src/Subservice/Infrastructure/ModuleAmberOrchid.fs"
+75 = "src/Subservice/Infrastructure/AreaAmberComet/ModuleAsterHill.fs"
+76 = "src/Subservice/Infrastructure/AreaAmberComet/ModuleAsterReef.fs"
+77 = "src/Subservice/Infrastructure/ModuleAmberIsland.fs"
+78 = "src/Subservice/Infrastructure/ModuleAsterGarden.fs"
+79 = "src/Subservice/Infrastructure/AreaAmberComet/ModuleAsterPine.fs"
+80 = "src/Subservice/Infrastructure/AreaAmberComet/ModuleAsterPeak.fs"
+81 = "src/Subservice/Infrastructure/AreaAmberComet/ModuleAsterRidge.fs"
+82 = "src/Subservice/Infrastructure/AreaAmberComet/ModuleAsterLake.fs"
+83 = "src/Subservice/Infrastructure/ModuleAmberSpring.fs"
+84 = "src/Subservice/Infrastructure/AreaAmberComet/ModuleAsterOrchid.fs"
+85 = "src/Subservice/Infrastructure/ModuleAsterSpring.fs"
+86 = "src/Subservice/Infrastructure/ModuleAsterBeacon.fs"
+87 = "src/Subservice/Infrastructure/ModuleAmberValley.fs"
+88 = "src/Subservice/Infrastructure/ModuleAsterForest.fs"
+89 = "src/Subservice/Infrastructure/ModuleAmberComet.fs"
+90 = "src/Subservice/WebApi/ModuleDawnStar.fs"
+91 = "src/Subservice/WebApi/ModuleDawnSummit.fs"
+92 = "src/Subservice/WebApi/ModuleElmOrchid.fs"
+93 = "src/Subservice/WebApi/ModuleElmLake.fs"
+94 = "src/Subservice/WebApi/ModuleElmFalcon.fs"
+95 = "src/Subservice/WebApi/AreaAmberStar/ModuleElmHarbor.fs"
+96 = "src/Subservice/WebApi/AreaAmberStar/ModuleElmHill.fs"
+97 = "src/Subservice/WebApi/ModuleElmCove.fs"
+98 = "src/Subservice/WebApi/ModuleDawnTrail.fs"
+99 = "src/Subservice/ModuleBrightHill.fs"
+100 = "src/Subservice/ModuleAmberBeacon.fs"
+101 = "src/Subservice/ModuleAmberAnchor.fs"
+102 = "src/Subservice/ModuleElmReef.fs"
+103 = "src/Subservice/ModuleBrightIsland.fs"
+
+[dependencies]
+13_8 = { references = 2 }
+15_2 = { references = 1 }
+15_8 = { references = 2 }
+17_16 = { references = 24 }
+19_18 = { references = 1 }
+27_26 = { references = 2 }
+28_17 = { references = 1 }
+29_17 = { references = 1 }
+29_26 = { references = 1 }
+31_8 = { references = 16 }
+31_26 = { references = 8 }
+31_27 = { references = 2 }
+31_30 = { references = 2 }
+33_32 = { calls = 4, references = 4 }
+34_13 = { implements = 3, references = 2 }
+34_32 = { calls = 2, references = 2 }
+35_11 = { calls = 2, references = 1 }
+36_11 = { calls = 1, references = 1 }
+37_10 = { implements = 2, references = 2 }
+38_7 = { implements = 3, references = 6 }
+41_12 = { calls = 1, references = 3 }
+41_21 = { references = 2 }
+41_25 = { implements = 3, references = 2 }
+41_33 = { calls = 1, references = 1 }
+43_10 = { references = 2 }
+43_31 = { calls = 1, implements = 2, references = 3 }
+44_16 = { constructs = 1, references = 15 }
+45_8 = { calls = 18, references = 1 }
+45_16 = { references = 8 }
+45_17 = { constructs = 1, references = 35 }
+45_28 = { implements = 2, references = 2 }
+45_40 = { references = 16 }
+45_44 = { calls = 15, references = 15 }
+46_8 = { calls = 6, references = 1 }
+46_16 = { references = 23 }
+46_17 = { references = 18 }
+46_26 = { constructs = 1, references = 16 }
+46_29 = { implements = 2, references = 2 }
+46_40 = { references = 16 }
+46_44 = { calls = 8, references = 8 }
+47_17 = { references = 1 }
+47_26 = { references = 5 }
+47_27 = { implements = 4, references = 2 }
+47_28 = { calls = 1, references = 3 }
+47_29 = { calls = 1, references = 3 }
+48_7 = { references = 1 }
+48_12 = { calls = 1, references = 3 }
+48_20 = { implements = 2, references = 2 }
+48_33 = { calls = 1, references = 1 }
+49_8 = { calls = 3, references = 4 }
+51_7 = { calls = 1, references = 1 }
+51_8 = { calls = 7, references = 1 }
+51_18 = { constructs = 2, references = 13 }
+51_19 = { implements = 2, references = 2 }
+51_20 = { calls = 1, references = 1 }
+51_33 = { calls = 1, references = 1 }
+52_19 = { references = 1 }
+52_20 = { references = 1 }
+52_48 = { references = 1 }
+52_51 = { references = 1 }
+53_8 = { calls = 7, references = 3 }
+53_24 = { implements = 2, references = 19 }
+53_31 = { calls = 2, references = 17 }
+54_8 = { calls = 3, references = 3 }
+54_10 = { references = 4 }
+54_31 = { implements = 2, constructs = 1, references = 4 }
+54_50 = { references = 8 }
+55_8 = { calls = 7, references = 4 }
+55_25 = { calls = 2, references = 1 }
+55_26 = { references = 2 }
+55_27 = { calls = 3, references = 3 }
+55_31 = { implements = 2, constructs = 1, references = 10 }
+56_8 = { calls = 9, references = 3 }
+56_25 = { calls = 1, references = 1 }
+56_31 = { calls = 2, implements = 2, references = 17 }
+56_50 = { references = 2 }
+57_8 = { calls = 7, references = 3 }
+57_25 = { calls = 1, references = 1 }
+57_31 = { calls = 2, implements = 2, references = 16 }
+57_50 = { references = 2 }
+58_8 = { calls = 6, references = 3 }
+58_31 = { calls = 3, implements = 2, references = 17 }
+59_8 = { calls = 5, references = 3 }
+59_25 = { calls = 1, references = 1 }
+59_31 = { calls = 1, implements = 2, references = 3 }
+59_50 = { references = 2 }
+60_8 = { calls = 2, references = 3 }
+60_26 = { references = 6 }
+60_31 = { calls = 1, implements = 2, references = 3 }
+61_8 = { calls = 7, references = 3 }
+61_31 = { calls = 3, implements = 2, references = 26 }
+62_8 = { calls = 7, references = 3 }
+62_25 = { calls = 1, references = 1 }
+62_31 = { calls = 1, implements = 2, references = 3 }
+62_50 = { references = 4 }
+63_2 = { constructs = 1 }
+63_3 = { calls = 1, references = 7 }
+63_8 = { calls = 7, references = 3 }
+63_10 = { references = 3 }
+63_15 = { calls = 1, references = 6 }
+63_30 = { references = 11 }
+63_31 = { implements = 2, references = 12 }
+64_4 = { calls = 1, references = 1 }
+64_8 = { calls = 8, references = 3 }
+64_26 = { references = 41 }
+64_30 = { constructs = 1, references = 4 }
+64_31 = { calls = 5, implements = 2, constructs = 1, references = 38 }
+64_43 = { calls = 1, references = 1 }
+64_49 = { calls = 5, references = 5 }
+65_5 = { calls = 1, references = 1 }
+65_8 = { calls = 6, references = 3 }
+65_26 = { references = 5 }
+65_30 = { references = 1 }
+65_31 = { calls = 3, implements = 2, references = 9 }
+66_4 = { calls = 1, references = 1 }
+66_8 = { calls = 7, references = 3 }
+66_26 = { references = 8 }
+66_31 = { calls = 2, implements = 2, references = 12 }
+67_6 = { calls = 1, references = 1 }
+67_8 = { calls = 6, references = 3 }
+67_26 = { references = 4 }
+67_31 = { calls = 5, implements = 2, references = 8 }
+67_50 = { references = 4 }
+68_6 = { calls = 1, references = 1 }
+68_8 = { calls = 6, references = 5 }
+68_26 = { references = 7 }
+68_27 = { references = 2 }
+68_31 = { calls = 5, implements = 2, references = 24 }
+68_50 = { references = 12 }
+69_6 = { calls = 8, references = 1 }
+69_8 = { calls = 22, references = 3 }
+69_31 = { calls = 2, implements = 2, constructs = 1, references = 43 }
+69_50 = { references = 66 }
+69_68 = { references = 4 }
+70_4 = { calls = 1, references = 1 }
+70_8 = { calls = 7, references = 1 }
+70_9 = { implements = 2, references = 2 }
+70_13 = { calls = 2, references = 1 }
+70_27 = { references = 1 }
+70_31 = { calls = 1, references = 4 }
+71_9 = { calls = 1, references = 1 }
+72_31 = { references = 16 }
+72_54 = { references = 1 }
+72_55 = { references = 1 }
+72_56 = { references = 1 }
+72_57 = { references = 1 }
+72_58 = { references = 1 }
+72_59 = { references = 1 }
+72_60 = { references = 1 }
+72_61 = { references = 1 }
+72_62 = { references = 1 }
+72_63 = { references = 1 }
+72_64 = { references = 1 }
+72_65 = { references = 1 }
+72_66 = { references = 1 }
+72_67 = { references = 1 }
+72_68 = { references = 1 }
+72_69 = { references = 1 }
+73_4 = { implements = 3, references = 2 }
+73_5 = { implements = 2, references = 2 }
+73_6 = { implements = 2, references = 2 }
+74_11 = { implements = 2, references = 6 }
+75_8 = { calls = 8, references = 2 }
+75_12 = { implements = 2, references = 3 }
+76_12 = { calls = 2, implements = 2, references = 4 }
+76_22 = { implements = 2, references = 2 }
+78_8 = { calls = 2, implements = 7, references = 7 }
+78_11 = { calls = 1, references = 2 }
+79_12 = { implements = 2, references = 4 }
+80_6 = { calls = 2, references = 2 }
+80_7 = { calls = 2, references = 1 }
+80_10 = { references = 2 }
+80_12 = { calls = 1, implements = 2, references = 6 }
+80_33 = { calls = 1, references = 1 }
+81_12 = { calls = 1, implements = 2, references = 4 }
+82_10 = { calls = 1, references = 1 }
+82_12 = { calls = 1, references = 1 }
+82_13 = { calls = 5, references = 1 }
+83_1 = { calls = 1, references = 2 }
+83_7 = { calls = 1, references = 1 }
+83_12 = { calls = 1, references = 1 }
+83_14 = { calls = 1, implements = 3, constructs = 1, references = 4 }
+83_23 = { implements = 2, references = 3 }
+83_33 = { calls = 3, references = 3 }
+84_12 = { references = 1 }
+84_22 = { references = 1 }
+84_76 = { references = 2 }
+85_8 = { calls = 1, references = 1 }
+85_10 = { references = 4 }
+85_13 = { implements = 4, references = 6 }
+85_32 = { references = 4 }
+86_5 = { calls = 1, references = 1 }
+86_8 = { calls = 3, references = 1 }
+86_12 = { calls = 1, references = 1 }
+86_13 = { calls = 2, constructs = 2, references = 3 }
+86_15 = { implements = 2, references = 11 }
+86_33 = { calls = 1, references = 1 }
+86_39 = { references = 3 }
+87_15 = { calls = 1, implements = 2, references = 4 }
+88_1 = { calls = 1 }
+88_8 = { calls = 5, references = 1 }
+88_14 = { references = 4 }
+88_31 = { implements = 8, references = 23 }
+88_83 = { calls = 6, constructs = 2 }
+89_10 = { implements = 5, references = 6 }
+89_12 = { implements = 6, references = 6 }
+89_21 = { implements = 2, references = 3 }
+89_31 = { implements = 4, references = 6 }
+89_39 = { implements = 3, references = 5 }
+89_42 = { calls = 1, references = 1 }
+93_10 = { references = 5 }
+93_91 = { references = 2 }
+93_92 = { calls = 2, references = 4 }
+95_8 = { calls = 1, references = 1 }
+95_31 = { calls = 1, references = 10 }
+95_91 = { references = 2 }
+96_5 = { calls = 1, references = 1 }
+96_8 = { calls = 16, references = 1 }
+96_18 = { constructs = 1, references = 12 }
+96_19 = { calls = 1, references = 1 }
+96_24 = { calls = 1, references = 5 }
+96_91 = { references = 2 }
+97_11 = { calls = 1, references = 2 }
+97_20 = { calls = 1, references = 1 }
+97_25 = { calls = 1, references = 1 }
+97_31 = { calls = 1, references = 1 }
+97_35 = { calls = 1 }
+97_36 = { calls = 1 }
+97_68 = { references = 2 }
+98_90 = { calls = 1, references = 1 }
+98_92 = { references = 1 }
+98_93 = { calls = 1, references = 1 }
+98_94 = { calls = 2, references = 2 }
+98_95 = { calls = 1, references = 3 }
+98_96 = { calls = 1, references = 3 }
+99_10 = { references = 1 }
+99_11 = { calls = 1, references = 3 }
+99_13 = { references = 1 }
+99_32 = { references = 2 }
+99_34 = { references = 1 }
+99_37 = { references = 1 }
+99_74 = { constructs = 1, references = 1 }
+99_77 = { references = 4 }
+99_81 = { calls = 1 }
+99_82 = { references = 4 }
+100_4 = { references = 2 }
+100_5 = { references = 2 }
+100_6 = { references = 2 }
+100_9 = { references = 1 }
+100_24 = { references = 1 }
+100_31 = { references = 1 }
+100_43 = { references = 1 }
+100_53 = { references = 1 }
+100_70 = { references = 1 }
+100_72 = { calls = 1, references = 1 }
+100_73 = { references = 4 }
+101_25 = { references = 1 }
+101_27 = { references = 1 }
+101_28 = { references = 1 }
+101_29 = { references = 1 }
+101_31 = { references = 2 }
+101_38 = { calls = 1, references = 1 }
+101_41 = { references = 1 }
+101_45 = { references = 1 }
+101_46 = { references = 1 }
+101_47 = { references = 1 }
+101_52 = { calls = 1, references = 1 }
+101_75 = { calls = 1, references = 1 }
+101_78 = { calls = 1, references = 1 }
+101_79 = { calls = 1, references = 1 }
+101_80 = { calls = 1, references = 1 }
+101_83 = { calls = 1, references = 1 }
+101_84 = { calls = 1, references = 1 }
+101_85 = { calls = 1, references = 1 }
+101_86 = { calls = 1, references = 1 }
+101_87 = { calls = 1, references = 1 }
+101_88 = { references = 2 }
+101_98 = { calls = 1, references = 1 }
+101_100 = { calls = 1, references = 1 }
+102_71 = { references = 1 }
+102_79 = { calls = 1, references = 1 }
+102_89 = { calls = 1, references = 1 }
+102_91 = { calls = 1, references = 1 }
+102_101 = { calls = 1, references = 1 }
+103_97 = { calls = 2 }
+103_98 = { calls = 1, references = 1 }
+103_99 = { calls = 1, references = 2 }
+103_102 = { calls = 1, references = 1 }

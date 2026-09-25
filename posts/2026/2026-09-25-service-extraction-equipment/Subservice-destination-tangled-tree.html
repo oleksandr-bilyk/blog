@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Extracted Subservice F# File Dependencies</title>
+  <script>
+    (() => {
+      const param = new URLSearchParams(window.location.search).get("scoutTheme");
+      const theme =
+        param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --cp-bg: #f7f4ef;
+      --cp-bg-elevated: #fcfbf8;
+      --cp-surface: #ffffff;
+      --cp-surface-soft: #f5f5f5;
+      --cp-border: #dedede;
+      --cp-border-strong: #919191;
+      --cp-text: #242424;
+      --cp-text-muted: #5c5c5c;
+      --cp-text-soft: #6f6f6f;
+      --cp-accent: #b11f4b;
+      --cp-accent-hover: #9a1a41;
+      --cp-accent-soft: rgba(177, 31, 75, 0.08);
+      --cp-accent-fg: #ffffff;
+      --cp-success: #16a34a;
+      --cp-danger: #dc2626;
+      --cp-warning: #f59e0b;
+      --cp-link: #0078d4;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
+      --cp-overlay: rgba(255, 255, 255, 0.8);
+      --cp-panel: rgba(255, 255, 255, 0.86);
+      --cp-panel-strong: rgba(255, 255, 255, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.55);
+      --cp-highlight: rgba(177, 31, 75, 0.12);
+    }
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --cp-bg: #3d3b3a;
+      --cp-bg-elevated: #343231;
+      --cp-surface: #292929;
+      --cp-surface-soft: #2e2e2e;
+      --cp-border: #474747;
+      --cp-border-strong: #5f5f5f;
+      --cp-text: #dedede;
+      --cp-text-muted: #919191;
+      --cp-text-soft: #b0b0b0;
+      --cp-accent: #fd8ea1;
+      --cp-accent-hover: #fb7b91;
+      --cp-accent-soft: rgba(253, 142, 161, 0.14);
+      --cp-accent-fg: #1a1a1a;
+      --cp-success: #4ade80;
+      --cp-danger: #f87171;
+      --cp-warning: #fbbf24;
+      --cp-link: #4da6ff;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+      --cp-overlay: rgba(41, 41, 41, 0.88);
+      --cp-panel: rgba(41, 41, 41, 0.72);
+      --cp-panel-strong: rgba(41, 41, 41, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.04);
+      --cp-highlight: rgba(253, 142, 161, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      background: var(--cp-bg);
+      color: var(--cp-text);
+      font-family: "Segoe UI", Aptos, Calibri, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      border: 1px solid var(--cp-border);
+      border-radius: 0.625rem;
+      padding: 7px 11px;
+      background: var(--cp-surface);
+      color: var(--cp-text);
+      cursor: pointer;
+    }
+
+    button:hover {
+      border-color: var(--cp-accent);
+      color: var(--cp-accent);
+    }
+
+    button.primary {
+      border-color: var(--cp-accent);
+      background: var(--cp-accent);
+      color: var(--cp-accent-fg);
+    }
+
+    button.primary:hover {
+      background: var(--cp-accent-hover);
+      color: var(--cp-accent-fg);
+    }
+
+    input[type="search"],
+    input[type="number"] {
+      width: 100%;
+      border: 1px solid var(--cp-border);
+      border-radius: 0.625rem;
+      padding: 8px 10px;
+      background: var(--cp-surface);
+      color: var(--cp-text);
+      outline: none;
+    }
+
+    input:focus {
+      border-color: var(--cp-accent);
+    }
+
+    .shell {
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr);
+      width: 100%;
+      height: 100%;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--cp-border);
+      background: var(--cp-bg-elevated);
+    }
+
+    .title-block {
+      min-width: 0;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 650;
+      line-height: 1.25;
+    }
+
+    .subtitle {
+      margin-top: 3px;
+      color: var(--cp-text-muted);
+      font-size: 12px;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .workspace {
+      display: grid;
+      grid-template-columns: 320px minmax(0, 1fr);
+      gap: 12px;
+      min-height: 0;
+      padding: 12px;
+    }
+
+    .sidebar,
+    .canvas-card {
+      min-height: 0;
+      border: 1px solid var(--cp-border);
+      background: var(--cp-surface);
+      box-shadow: 0 1px 2px var(--cp-border);
+    }
+
+    .sidebar {
+      overflow: auto;
+      border-radius: 16px;
+      padding: 14px;
+    }
+
+    .canvas-card {
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      overflow: hidden;
+      border-radius: 16px;
+    }
+
+    .section {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--cp-border);
+    }
+
+    .section:first-child {
+      padding-top: 0;
+    }
+
+    .section:last-child {
+      border-bottom: 0;
+    }
+
+    .section h2 {
+      margin: 0 0 8px;
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .stat {
+      border: 1px solid var(--cp-border);
+      border-radius: 0.625rem;
+      padding: 9px;
+      background: var(--cp-surface-soft);
+    }
+
+    .stat-value {
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .stat-label {
+      margin-top: 2px;
+      color: var(--cp-text-muted);
+      font-size: 11px;
+    }
+
+    .filter-list {
+      display: grid;
+      gap: 7px;
+    }
+
+    .filter-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 12px;
+    }
+
+    .filter-row label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+
+    .swatch {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--kind-color);
+    }
+
+    .kind-calls {
+      --kind-color: var(--cp-link);
+    }
+
+    .kind-inherits {
+      --kind-color: var(--cp-accent);
+    }
+
+    .kind-implements {
+      --kind-color: var(--cp-success);
+    }
+
+    .kind-constructs {
+      --kind-color: var(--cp-warning);
+    }
+
+    .kind-references {
+      --kind-color: var(--cp-text-muted);
+    }
+
+    .muted {
+      color: var(--cp-text-muted);
+    }
+
+    .range-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 56px;
+      align-items: center;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      accent-color: var(--cp-accent);
+    }
+
+    .canvas-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--cp-border);
+      background: var(--cp-bg-elevated);
+    }
+
+    .toolbar-group {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .toolbar-status {
+      overflow: hidden;
+      color: var(--cp-text-muted);
+      font-size: 12px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    #viewport {
+      position: relative;
+      min-width: 0;
+      min-height: 0;
+      overflow: hidden;
+      background: var(--cp-surface-soft);
+      cursor: grab;
+      touch-action: none;
+    }
+
+    #viewport.dragging {
+      cursor: grabbing;
+    }
+
+    #graph {
+      display: block;
+      width: 100%;
+      height: 100%;
+      user-select: none;
+    }
+
+    .edge {
+      fill: none;
+      stroke: var(--kind-color);
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      opacity: 0.28;
+      vector-effect: non-scaling-stroke;
+      pointer-events: stroke;
+      transition: opacity 120ms ease;
+    }
+
+    .edge:hover,
+    .edge.related {
+      opacity: 0.88;
+    }
+
+    .edge.dimmed {
+      opacity: 0.035;
+    }
+
+    .node {
+      cursor: pointer;
+      outline: none;
+    }
+
+    .node rect {
+      fill: var(--cp-surface);
+      stroke: var(--cp-border-strong);
+      stroke-width: 1;
+      vector-effect: non-scaling-stroke;
+      transition: opacity 120ms ease, stroke-width 120ms ease;
+    }
+
+    .node text {
+      fill: var(--cp-text);
+      pointer-events: none;
+    }
+
+    .node .node-id {
+      fill: var(--cp-text-muted);
+      font-family: Consolas, "Courier New", Courier, monospace;
+      font-size: 9px;
+    }
+
+    .node .node-name {
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .node.selected rect {
+      fill: var(--cp-accent);
+      stroke: var(--cp-accent);
+      stroke-width: 2;
+    }
+
+    .node.selected text,
+    .node.selected .node-id {
+      fill: var(--cp-accent-fg);
+    }
+
+    .node.related rect {
+      stroke: var(--cp-accent);
+      stroke-width: 2;
+    }
+
+    .node.search-match rect {
+      stroke: var(--cp-warning);
+      stroke-width: 3;
+    }
+
+    .node.dimmed {
+      opacity: 0.16;
+    }
+
+    .level-label {
+      fill: var(--cp-text-muted);
+      font-size: 10px;
+      font-weight: 600;
+      pointer-events: none;
+    }
+
+    .canvas-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 7px 12px;
+      border-top: 1px solid var(--cp-border);
+      background: var(--cp-bg-elevated);
+      color: var(--cp-text-muted);
+      font-size: 11px;
+    }
+
+    .detail-empty {
+      color: var(--cp-text-muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .detail-path {
+      overflow-wrap: anywhere;
+      font-family: Consolas, "Courier New", Courier, monospace;
+      font-size: 11px;
+      line-height: 1.45;
+    }
+
+    .detail-list {
+      display: grid;
+      gap: 5px;
+      margin: 8px 0 0;
+      padding: 0;
+      list-style: none;
+      font-size: 11px;
+    }
+
+    .detail-list li {
+      padding: 5px 7px;
+      border: 1px solid var(--cp-border);
+      border-radius: 0.625rem;
+      background: var(--cp-surface-soft);
+      overflow-wrap: anywhere;
+    }
+
+    .tooltip {
+      position: fixed;
+      z-index: 20;
+      display: none;
+      max-width: 420px;
+      border: 1px solid var(--cp-border-strong);
+      border-radius: 0.625rem;
+      padding: 8px 10px;
+      background: var(--cp-panel-strong);
+      box-shadow: 0 1px 2px var(--cp-border);
+      color: var(--cp-text);
+      font-size: 11px;
+      line-height: 1.45;
+      pointer-events: none;
+    }
+
+    .tooltip strong {
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .tooltip code {
+      font-family: Consolas, "Courier New", Courier, monospace;
+      color: var(--cp-text-soft);
+    }
+
+    .keyboard-hint {
+      font-family: Consolas, "Courier New", Courier, monospace;
+    }
+
+    @media (max-width: 900px) {
+      body {
+        overflow: auto;
+      }
+
+      .shell {
+        height: auto;
+        min-height: 100%;
+      }
+
+      .workspace {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 72vh;
+      }
+
+      .sidebar {
+        max-height: 44vh;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <div class="title-block">
+        <h1 id="page-title">Extracted Subservice F# File Dependencies</h1>
+        <div class="subtitle">
+          Foundational dependencies flow left to right toward consuming F# files.
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="clear-selection" type="button">Clear selection</button>
+        <button id="fit-header" class="primary" type="button">Fit graph</button>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <aside class="sidebar" aria-label="Graph controls">
+        <section class="section">
+          <h2>Graph summary</h2>
+          <div class="stats">
+            <div class="stat">
+              <div class="stat-value" id="stat-files">0</div>
+              <div class="stat-label">F# files</div>
+            </div>
+            <div class="stat">
+              <div class="stat-value" id="stat-edges">0</div>
+              <div class="stat-label">file dependencies</div>
+            </div>
+            <div class="stat">
+              <div class="stat-value" id="stat-occurrences">0</div>
+              <div class="stat-label">references</div>
+            </div>
+            <div class="stat">
+              <div class="stat-value" id="stat-levels">0</div>
+              <div class="stat-label">DAG levels</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2>Find a file</h2>
+          <input
+            id="search"
+            type="search"
+            placeholder="File name or path"
+            autocomplete="off"
+          >
+          <div class="muted" id="search-status" style="margin-top: 6px; font-size: 11px;">
+            Search highlights matching nodes.
+          </div>
+        </section>
+
+        <section class="section">
+          <h2>Dependency kinds</h2>
+          <div class="filter-list" id="kind-filters"></div>
+          <div class="range-row">
+            <input id="minimum-count" type="range" min="1" value="1">
+            <input id="minimum-count-value" type="number" min="1" value="1">
+          </div>
+          <div class="muted" style="margin-top: 5px; font-size: 11px;">
+            Minimum selected-kind occurrences per edge.
+          </div>
+        </section>
+
+        <section class="section">
+          <h2>Selected file</h2>
+          <div id="details" class="detail-empty">
+            Select a node to highlight its dependencies and dependents.
+          </div>
+        </section>
+      </aside>
+
+      <section class="canvas-card" aria-label="Tangled tree visualization">
+        <div class="canvas-toolbar">
+          <div class="toolbar-group">
+            <button id="zoom-out" type="button" aria-label="Zoom out">−</button>
+            <button id="zoom-in" type="button" aria-label="Zoom in">+</button>
+            <button id="fit" type="button">Fit</button>
+            <button id="actual-size" type="button">100%</button>
+          </div>
+          <div class="toolbar-status" id="toolbar-status">
+            Loading graph…
+          </div>
+        </div>
+
+        <div id="viewport">
+          <svg id="graph" role="img" aria-labelledby="page-title">
+            <g id="scene"></g>
+          </svg>
+          <div id="tooltip" class="tooltip" role="tooltip"></div>
+        </div>
+
+        <div class="canvas-footer">
+          <span>Drag to pan · wheel to zoom · click a file to trace relationships</span>
+          <span class="keyboard-hint">Enter/Space selects a focused node</span>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const GRAPH = {"files":[{"id":1,"path":"src/Subservice/Model/ModuleAsterWood.fs","name":"ModuleAsterWood.fs","folder":"src/Subservice/Model"},{"id":2,"path":"src/Subservice/Model/ModuleAsterValley.fs","name":"ModuleAsterValley.fs","folder":"src/Subservice/Model"},{"id":3,"path":"src/Subservice/Model/AreaAmberCove/ModuleBrightGrove.fs","name":"ModuleBrightGrove.fs","folder":"src/Subservice/Model/AreaAmberCove"},{"id":4,"path":"src/Subservice/Services/AreaAmberFalcon/ModuleBrightTrail.fs","name":"ModuleBrightTrail.fs","folder":"src/Subservice/Services/AreaAmberFalcon"},{"id":5,"path":"src/Subservice/Services/AreaAmberFalcon/ModuleBrightStar.fs","name":"ModuleBrightStar.fs","folder":"src/Subservice/Services/AreaAmberFalcon"},{"id":6,"path":"src/Subservice/Services/AreaAmberFalcon/ModuleBrightSpring.fs","name":"ModuleBrightSpring.fs","folder":"src/Subservice/Services/AreaAmberFalcon"},{"id":7,"path":"src/Subservice/Services/AreaAmberFalcon/ModuleCedarAnchor.fs","name":"ModuleCedarAnchor.fs","folder":"src/Subservice/Services/AreaAmberFalcon"},{"id":8,"path":"src/Subservice/Services/AreaAmberFalcon/ModuleBrightWood.fs","name":"ModuleBrightWood.fs","folder":"src/Subservice/Services/AreaAmberFalcon"},{"id":9,"path":"src/Subservice/Services/AreaAmberFalcon/ModuleCedarTrail.fs","name":"ModuleCedarTrail.fs","folder":"src/Subservice/Services/AreaAmberFalcon"},{"id":10,"path":"src/Subservice/Services/AreaAmberFalcon/ModuleBrightOrchid.fs","name":"ModuleBrightOrchid.fs","folder":"src/Subservice/Services/AreaAmberFalcon"},{"id":11,"path":"src/Subservice/Services/AreaAmberFalcon/ModuleCedarComet.fs","name":"ModuleCedarComet.fs","folder":"src/Subservice/Services/AreaAmberFalcon"},{"id":12,"path":"src/Subservice/Services/AreaAmberFalcon/ModuleCedarCanyon.fs","name":"ModuleCedarCanyon.fs","folder":"src/Subservice/Services/AreaAmberFalcon"},{"id":13,"path":"src/Subservice/Services/AreaAmberFalcon/ModuleCedarSpring.fs","name":"ModuleCedarSpring.fs","folder":"src/Subservice/Services/AreaAmberFalcon"},{"id":14,"path":"src/Subservice/Services/AreaAmberFalcon/ModuleCedarBridge.fs","name":"ModuleCedarBridge.fs","folder":"src/Subservice/Services/AreaAmberFalcon"},{"id":15,"path":"src/Subservice/Services/AreaAmberFalcon/ModuleCedarBrook.fs","name":"ModuleCedarBrook.fs","folder":"src/Subservice/Services/AreaAmberFalcon"},{"id":16,"path":"src/Subservice/Services/AreaAmberFalcon/AreaAmberForest/ModuleCedarPine.fs","name":"ModuleCedarPine.fs","folder":"src/Subservice/Services/AreaAmberFalcon/AreaAmberForest"},{"id":17,"path":"src/Subservice/Services/AreaAmberFalcon/AreaAmberForest/ModuleCedarReef.fs","name":"ModuleCedarReef.fs","folder":"src/Subservice/Services/AreaAmberFalcon/AreaAmberForest"},{"id":18,"path":"src/Subservice/Services/AreaAmberFalcon/AreaAmberForest/ModuleCedarSky.fs","name":"ModuleCedarSky.fs","folder":"src/Subservice/Services/AreaAmberFalcon/AreaAmberForest"},{"id":19,"path":"src/Subservice/Services/AreaAmberFalcon/AreaAmberForest/ModuleCedarOrchid.fs","name":"ModuleCedarOrchid.fs","folder":"src/Subservice/Services/AreaAmberFalcon/AreaAmberForest"},{"id":20,"path":"src/Subservice/Services/AreaAmberFalcon/AreaAmberForest/ModuleCedarHarbor.fs","name":"ModuleCedarHarbor.fs","folder":"src/Subservice/Services/AreaAmberFalcon/AreaAmberForest"},{"id":21,"path":"src/Subservice/Services/AreaAmberFalcon/AreaAmberForest/ModuleCedarIsland.fs","name":"ModuleCedarIsland.fs","folder":"src/Subservice/Services/AreaAmberFalcon/AreaAmberForest"},{"id":22,"path":"src/Subservice/Services/AreaAmberFalcon/AreaAmberForest/ModuleCedarHill.fs","name":"ModuleCedarHill.fs","folder":"src/Subservice/Services/AreaAmberFalcon/AreaAmberForest"},{"id":23,"path":"src/Subservice/Services/AreaAmberFalcon/AreaAmberForest/ModuleCedarLake.fs","name":"ModuleCedarLake.fs","folder":"src/Subservice/Services/AreaAmberFalcon/AreaAmberForest"},{"id":24,"path":"src/Subservice/Services/AreaAmberFalcon/AreaAmberForest/ModuleCedarPeak.fs","name":"ModuleCedarPeak.fs","folder":"src/Subservice/Services/AreaAmberFalcon/AreaAmberForest"},{"id":25,"path":"src/Subservice/Services/AreaAmberFalcon/AreaAmberForest/ModuleCedarFalcon.fs","name":"ModuleCedarFalcon.fs","folder":"src/Subservice/Services/AreaAmberFalcon/AreaAmberForest"},{"id":26,"path":"src/Subservice/Services/AreaAmberFalcon/AreaAmberForest/ModuleCedarRidge.fs","name":"ModuleCedarRidge.fs","folder":"src/Subservice/Services/AreaAmberFalcon/AreaAmberForest"},{"id":27,"path":"src/Subservice/Services/AreaAmberFalcon/AreaAmberForest/ModuleCedarForest.fs","name":"ModuleCedarForest.fs","folder":"src/Subservice/Services/AreaAmberFalcon/AreaAmberForest"},{"id":28,"path":"src/Subservice/Services/AreaAmberFalcon/AreaAmberForest/ModuleCedarGarden.fs","name":"ModuleCedarGarden.fs","folder":"src/Subservice/Services/AreaAmberFalcon/AreaAmberForest"},{"id":29,"path":"src/Subservice/Services/AreaAmberFalcon/AreaAmberForest/ModuleCedarGrove.fs","name":"ModuleCedarGrove.fs","folder":"src/Subservice/Services/AreaAmberFalcon/AreaAmberForest"},{"id":30,"path":"src/Subservice/Services/AreaAmberFalcon/ModuleBrightValley.fs","name":"ModuleBrightValley.fs","folder":"src/Subservice/Services/AreaAmberFalcon"},{"id":31,"path":"src/Subservice/Services/AreaAmberFalcon/ModuleCedarSummit.fs","name":"ModuleCedarSummit.fs","folder":"src/Subservice/Services/AreaAmberFalcon"},{"id":32,"path":"src/Subservice/Services/ModuleCrispGrove.fs","name":"ModuleCrispGrove.fs","folder":"src/Subservice/Services"},{"id":33,"path":"src/Subservice/Services/ModuleCoralSummit.fs","name":"ModuleCoralSummit.fs","folder":"src/Subservice/Services"},{"id":34,"path":"src/Subservice/Services/ModuleDawnOrchid.fs","name":"ModuleDawnOrchid.fs","folder":"src/Subservice/Services"},{"id":35,"path":"src/Subservice/Services/ModuleCrispOrchid.fs","name":"ModuleCrispOrchid.fs","folder":"src/Subservice/Services"},{"id":36,"path":"src/Subservice/Services/ModuleCoralWave.fs","name":"ModuleCoralWave.fs","folder":"src/Subservice/Services"},{"id":37,"path":"src/Subservice/Services/ModuleCoralValley.fs","name":"ModuleCoralValley.fs","folder":"src/Subservice/Services"},{"id":38,"path":"src/Subservice/Services/ModuleCrispAnchor.fs","name":"ModuleCrispAnchor.fs","folder":"src/Subservice/Services"},{"id":39,"path":"src/Subservice/Services/AreaAmberHill/ModuleCoralHill.fs","name":"ModuleCoralHill.fs","folder":"src/Subservice/Services/AreaAmberHill"},{"id":40,"path":"src/Subservice/Services/AreaAmberOrchid/ModuleCrispCanyon.fs","name":"ModuleCrispCanyon.fs","folder":"src/Subservice/Services/AreaAmberOrchid"},{"id":41,"path":"src/Subservice/Services/AreaAmberOrchid/ModuleCrispBrook.fs","name":"ModuleCrispBrook.fs","folder":"src/Subservice/Services/AreaAmberOrchid"},{"id":42,"path":"src/Subservice/Services/AreaAmberOrchid/ModuleCrispBeacon.fs","name":"ModuleCrispBeacon.fs","folder":"src/Subservice/Services/AreaAmberOrchid"},{"id":43,"path":"src/Subservice/Services/AreaAmberOrchid/ModuleCrispBridge.fs","name":"ModuleCrispBridge.fs","folder":"src/Subservice/Services/AreaAmberOrchid"},{"id":44,"path":"src/Subservice/Services/AreaAmberPeak/ModuleCrispForest.fs","name":"ModuleCrispForest.fs","folder":"src/Subservice/Services/AreaAmberPeak"},{"id":45,"path":"src/Subservice/Services/AreaAmberPeak/ModuleCrispCove.fs","name":"ModuleCrispCove.fs","folder":"src/Subservice/Services/AreaAmberPeak"},{"id":46,"path":"src/Subservice/Services/AreaAmberPeak/ModuleCrispGarden.fs","name":"ModuleCrispGarden.fs","folder":"src/Subservice/Services/AreaAmberPeak"},{"id":47,"path":"src/Subservice/Services/AreaAmberPeak/ModuleCrispComet.fs","name":"ModuleCrispComet.fs","folder":"src/Subservice/Services/AreaAmberPeak"},{"id":48,"path":"src/Subservice/Services/AreaAmberReef/ModuleCrispValley.fs","name":"ModuleCrispValley.fs","folder":"src/Subservice/Services/AreaAmberReef"},{"id":49,"path":"src/Subservice/Services/AreaAmberReef/ModuleCrispStar.fs","name":"ModuleCrispStar.fs","folder":"src/Subservice/Services/AreaAmberReef"},{"id":50,"path":"src/Subservice/Services/AreaAmberReef/ModuleDawnFalcon.fs","name":"ModuleDawnFalcon.fs","folder":"src/Subservice/Services/AreaAmberReef"},{"id":51,"path":"src/Subservice/Services/AreaAmberReef/ModuleCrispWave.fs","name":"ModuleCrispWave.fs","folder":"src/Subservice/Services/AreaAmberReef"},{"id":52,"path":"src/Subservice/Services/AreaAmberReef/ModuleCrispSpring.fs","name":"ModuleCrispSpring.fs","folder":"src/Subservice/Services/AreaAmberReef"},{"id":53,"path":"src/Subservice/Services/AreaAmberReef/ModuleDawnGrove.fs","name":"ModuleDawnGrove.fs","folder":"src/Subservice/Services/AreaAmberReef"},{"id":54,"path":"src/Subservice/Services/AreaAmberReef/ModuleDawnBeacon.fs","name":"ModuleDawnBeacon.fs","folder":"src/Subservice/Services/AreaAmberReef"},{"id":55,"path":"src/Subservice/Services/AreaAmberReef/ModuleDawnAnchor.fs","name":"ModuleDawnAnchor.fs","folder":"src/Subservice/Services/AreaAmberReef"},{"id":56,"path":"src/Subservice/Services/AreaAmberReef/ModuleCrispWood.fs","name":"ModuleCrispWood.fs","folder":"src/Subservice/Services/AreaAmberReef"},{"id":57,"path":"src/Subservice/Services/AreaAmberReef/ModuleCrispTrail.fs","name":"ModuleCrispTrail.fs","folder":"src/Subservice/Services/AreaAmberReef"},{"id":58,"path":"src/Subservice/Services/AreaAmberReef/ModuleDawnBrook.fs","name":"ModuleDawnBrook.fs","folder":"src/Subservice/Services/AreaAmberReef"},{"id":59,"path":"src/Subservice/Services/AreaAmberReef/ModuleDawnHill.fs","name":"ModuleDawnHill.fs","folder":"src/Subservice/Services/AreaAmberReef"},{"id":60,"path":"src/Subservice/Services/AreaAmberReef/ModuleDawnHarbor.fs","name":"ModuleDawnHarbor.fs","folder":"src/Subservice/Services/AreaAmberReef"},{"id":61,"path":"src/Subservice/Services/AreaAmberReef/ModuleDawnBridge.fs","name":"ModuleDawnBridge.fs","folder":"src/Subservice/Services/AreaAmberReef"},{"id":62,"path":"src/Subservice/Services/AreaAmberReef/ModuleDawnCanyon.fs","name":"ModuleDawnCanyon.fs","folder":"src/Subservice/Services/AreaAmberReef"},{"id":63,"path":"src/Subservice/Services/AreaAmberReef/ModuleDawnLake.fs","name":"ModuleDawnLake.fs","folder":"src/Subservice/Services/AreaAmberReef"},{"id":64,"path":"src/Subservice/Services/AreaAmberReef/ModuleCrispPine.fs","name":"ModuleCrispPine.fs","folder":"src/Subservice/Services/AreaAmberReef"},{"id":65,"path":"src/Subservice/Services/AreaAmberReef/ModuleCrispReef.fs","name":"ModuleCrispReef.fs","folder":"src/Subservice/Services/AreaAmberReef"},{"id":66,"path":"src/Subservice/Services/AreaAmberReef/ModuleCrispPeak.fs","name":"ModuleCrispPeak.fs","folder":"src/Subservice/Services/AreaAmberReef"},{"id":67,"path":"src/Subservice/Services/AreaAmberReef/ModuleCrispRidge.fs","name":"ModuleCrispRidge.fs","folder":"src/Subservice/Services/AreaAmberReef"},{"id":68,"path":"src/Subservice/Services/AreaAmberReef/ModuleDawnComet.fs","name":"ModuleDawnComet.fs","folder":"src/Subservice/Services/AreaAmberReef"},{"id":69,"path":"src/Subservice/Services/AreaAmberReef/ModuleDawnIsland.fs","name":"ModuleDawnIsland.fs","folder":"src/Subservice/Services/AreaAmberReef"},{"id":70,"path":"src/Subservice/Services/AreaAmberReef/ModuleDawnGarden.fs","name":"ModuleDawnGarden.fs","folder":"src/Subservice/Services/AreaAmberReef"},{"id":71,"path":"src/Subservice/Services/AreaAmberReef/ModuleDawnForest.fs","name":"ModuleDawnForest.fs","folder":"src/Subservice/Services/AreaAmberReef"},{"id":72,"path":"src/Subservice/Services/AreaAmberReef/ModuleDawnCove.fs","name":"ModuleDawnCove.fs","folder":"src/Subservice/Services/AreaAmberReef"},{"id":73,"path":"src/Subservice/Infrastructure/ModuleAsterSky.fs","name":"ModuleAsterSky.fs","folder":"src/Subservice/Infrastructure"},{"id":74,"path":"src/Subservice/Infrastructure/ModuleAmberOrchid.fs","name":"ModuleAmberOrchid.fs","folder":"src/Subservice/Infrastructure"},{"id":75,"path":"src/Subservice/Infrastructure/AreaAmberComet/ModuleAsterHill.fs","name":"ModuleAsterHill.fs","folder":"src/Subservice/Infrastructure/AreaAmberComet"},{"id":76,"path":"src/Subservice/Infrastructure/AreaAmberComet/ModuleAsterReef.fs","name":"ModuleAsterReef.fs","folder":"src/Subservice/Infrastructure/AreaAmberComet"},{"id":77,"path":"src/Subservice/Infrastructure/ModuleAmberIsland.fs","name":"ModuleAmberIsland.fs","folder":"src/Subservice/Infrastructure"},{"id":78,"path":"src/Subservice/Infrastructure/ModuleAsterGarden.fs","name":"ModuleAsterGarden.fs","folder":"src/Subservice/Infrastructure"},{"id":79,"path":"src/Subservice/Infrastructure/AreaAmberComet/ModuleAsterPine.fs","name":"ModuleAsterPine.fs","folder":"src/Subservice/Infrastructure/AreaAmberComet"},{"id":80,"path":"src/Subservice/Infrastructure/AreaAmberComet/ModuleAsterPeak.fs","name":"ModuleAsterPeak.fs","folder":"src/Subservice/Infrastructure/AreaAmberComet"},{"id":81,"path":"src/Subservice/Infrastructure/AreaAmberComet/ModuleAsterRidge.fs","name":"ModuleAsterRidge.fs","folder":"src/Subservice/Infrastructure/AreaAmberComet"},{"id":82,"path":"src/Subservice/Infrastructure/AreaAmberComet/ModuleAsterLake.fs","name":"ModuleAsterLake.fs","folder":"src/Subservice/Infrastructure/AreaAmberComet"},{"id":83,"path":"src/Subservice/Infrastructure/ModuleAmberSpring.fs","name":"ModuleAmberSpring.fs","folder":"src/Subservice/Infrastructure"},{"id":84,"path":"src/Subservice/Infrastructure/AreaAmberComet/ModuleAsterOrchid.fs","name":"ModuleAsterOrchid.fs","folder":"src/Subservice/Infrastructure/AreaAmberComet"},{"id":85,"path":"src/Subservice/Infrastructure/ModuleAsterSpring.fs","name":"ModuleAsterSpring.fs","folder":"src/Subservice/Infrastructure"},{"id":86,"path":"src/Subservice/Infrastructure/ModuleAsterBeacon.fs","name":"ModuleAsterBeacon.fs","folder":"src/Subservice/Infrastructure"},{"id":87,"path":"src/Subservice/Infrastructure/ModuleAmberValley.fs","name":"ModuleAmberValley.fs","folder":"src/Subservice/Infrastructure"},{"id":88,"path":"src/Subservice/Infrastructure/ModuleAsterForest.fs","name":"ModuleAsterForest.fs","folder":"src/Subservice/Infrastructure"},{"id":89,"path":"src/Subservice/Infrastructure/ModuleAmberComet.fs","name":"ModuleAmberComet.fs","folder":"src/Subservice/Infrastructure"},{"id":90,"path":"src/Subservice/WebApi/ModuleDawnStar.fs","name":"ModuleDawnStar.fs","folder":"src/Subservice/WebApi"},{"id":91,"path":"src/Subservice/WebApi/ModuleDawnSummit.fs","name":"ModuleDawnSummit.fs","folder":"src/Subservice/WebApi"},{"id":92,"path":"src/Subservice/WebApi/ModuleElmOrchid.fs","name":"ModuleElmOrchid.fs","folder":"src/Subservice/WebApi"},{"id":93,"path":"src/Subservice/WebApi/ModuleElmLake.fs","name":"ModuleElmLake.fs","folder":"src/Subservice/WebApi"},{"id":94,"path":"src/Subservice/WebApi/ModuleElmFalcon.fs","name":"ModuleElmFalcon.fs","folder":"src/Subservice/WebApi"},{"id":95,"path":"src/Subservice/WebApi/AreaAmberStar/ModuleElmHarbor.fs","name":"ModuleElmHarbor.fs","folder":"src/Subservice/WebApi/AreaAmberStar"},{"id":96,"path":"src/Subservice/WebApi/AreaAmberStar/ModuleElmHill.fs","name":"ModuleElmHill.fs","folder":"src/Subservice/WebApi/AreaAmberStar"},{"id":97,"path":"src/Subservice/WebApi/ModuleElmCove.fs","name":"ModuleElmCove.fs","folder":"src/Subservice/WebApi"},{"id":98,"path":"src/Subservice/WebApi/ModuleDawnTrail.fs","name":"ModuleDawnTrail.fs","folder":"src/Subservice/WebApi"},{"id":99,"path":"src/Subservice/ModuleBrightHill.fs","name":"ModuleBrightHill.fs","folder":"src/Subservice"},{"id":100,"path":"src/Subservice/ModuleAmberBeacon.fs","name":"ModuleAmberBeacon.fs","folder":"src/Subservice"},{"id":101,"path":"src/Subservice/ModuleAmberAnchor.fs","name":"ModuleAmberAnchor.fs","folder":"src/Subservice"},{"id":102,"path":"src/Subservice/ModuleElmReef.fs","name":"ModuleElmReef.fs","folder":"src/Subservice"},{"id":103,"path":"src/Subservice/ModuleBrightIsland.fs","name":"ModuleBrightIsland.fs","folder":"src/Subservice"}],"dependencies":[{"id":"13_8","source":13,"target":8,"counts":{"references":2},"total":2},{"id":"15_2","source":15,"target":2,"counts":{"references":1},"total":1},{"id":"15_8","source":15,"target":8,"counts":{"references":2},"total":2},{"id":"17_16","source":17,"target":16,"counts":{"references":24},"total":24},{"id":"19_18","source":19,"target":18,"counts":{"references":1},"total":1},{"id":"27_26","source":27,"target":26,"counts":{"references":2},"total":2},{"id":"28_17","source":28,"target":17,"counts":{"references":1},"total":1},{"id":"29_17","source":29,"target":17,"counts":{"references":1},"total":1},{"id":"29_26","source":29,"target":26,"counts":{"references":1},"total":1},{"id":"31_8","source":31,"target":8,"counts":{"references":16},"total":16},{"id":"31_26","source":31,"target":26,"counts":{"references":8},"total":8},{"id":"31_27","source":31,"target":27,"counts":{"references":2},"total":2},{"id":"31_30","source":31,"target":30,"counts":{"references":2},"total":2},{"id":"33_32","source":33,"target":32,"counts":{"calls":4,"references":4},"total":8},{"id":"34_13","source":34,"target":13,"counts":{"implements":3,"references":2},"total":5},{"id":"34_32","source":34,"target":32,"counts":{"calls":2,"references":2},"total":4},{"id":"35_11","source":35,"target":11,"counts":{"calls":2,"references":1},"total":3},{"id":"36_11","source":36,"target":11,"counts":{"calls":1,"references":1},"total":2},{"id":"37_10","source":37,"target":10,"counts":{"implements":2,"references":2},"total":4},{"id":"38_7","source":38,"target":7,"counts":{"implements":3,"references":6},"total":9},{"id":"41_12","source":41,"target":12,"counts":{"calls":1,"references":3},"total":4},{"id":"41_21","source":41,"target":21,"counts":{"references":2},"total":2},{"id":"41_25","source":41,"target":25,"counts":{"implements":3,"references":2},"total":5},{"id":"41_33","source":41,"target":33,"counts":{"calls":1,"references":1},"total":2},{"id":"43_10","source":43,"target":10,"counts":{"references":2},"total":2},{"id":"43_31","source":43,"target":31,"counts":{"calls":1,"implements":2,"references":3},"total":6},{"id":"44_16","source":44,"target":16,"counts":{"constructs":1,"references":15},"total":16},{"id":"45_8","source":45,"target":8,"counts":{"calls":18,"references":1},"total":19},{"id":"45_16","source":45,"target":16,"counts":{"references":8},"total":8},{"id":"45_17","source":45,"target":17,"counts":{"constructs":1,"references":35},"total":36},{"id":"45_28","source":45,"target":28,"counts":{"implements":2,"references":2},"total":4},{"id":"45_40","source":45,"target":40,"counts":{"references":16},"total":16},{"id":"45_44","source":45,"target":44,"counts":{"calls":15,"references":15},"total":30},{"id":"46_8","source":46,"target":8,"counts":{"calls":6,"references":1},"total":7},{"id":"46_16","source":46,"target":16,"counts":{"references":23},"total":23},{"id":"46_17","source":46,"target":17,"counts":{"references":18},"total":18},{"id":"46_26","source":46,"target":26,"counts":{"constructs":1,"references":16},"total":17},{"id":"46_29","source":46,"target":29,"counts":{"implements":2,"references":2},"total":4},{"id":"46_40","source":46,"target":40,"counts":{"references":16},"total":16},{"id":"46_44","source":46,"target":44,"counts":{"calls":8,"references":8},"total":16},{"id":"47_17","source":47,"target":17,"counts":{"references":1},"total":1},{"id":"47_26","source":47,"target":26,"counts":{"references":5},"total":5},{"id":"47_27","source":47,"target":27,"counts":{"implements":4,"references":2},"total":6},{"id":"47_28","source":47,"target":28,"counts":{"calls":1,"references":3},"total":4},{"id":"47_29","source":47,"target":29,"counts":{"calls":1,"references":3},"total":4},{"id":"48_7","source":48,"target":7,"counts":{"references":1},"total":1},{"id":"48_12","source":48,"target":12,"counts":{"calls":1,"references":3},"total":4},{"id":"48_20","source":48,"target":20,"counts":{"implements":2,"references":2},"total":4},{"id":"48_33","source":48,"target":33,"counts":{"calls":1,"references":1},"total":2},{"id":"49_8","source":49,"target":8,"counts":{"calls":3,"references":4},"total":7},{"id":"51_7","source":51,"target":7,"counts":{"calls":1,"references":1},"total":2},{"id":"51_8","source":51,"target":8,"counts":{"calls":7,"references":1},"total":8},{"id":"51_18","source":51,"target":18,"counts":{"constructs":2,"references":13},"total":15},{"id":"51_19","source":51,"target":19,"counts":{"implements":2,"references":2},"total":4},{"id":"51_20","source":51,"target":20,"counts":{"calls":1,"references":1},"total":2},{"id":"51_33","source":51,"target":33,"counts":{"calls":1,"references":1},"total":2},{"id":"52_19","source":52,"target":19,"counts":{"references":1},"total":1},{"id":"52_20","source":52,"target":20,"counts":{"references":1},"total":1},{"id":"52_48","source":52,"target":48,"counts":{"references":1},"total":1},{"id":"52_51","source":52,"target":51,"counts":{"references":1},"total":1},{"id":"53_8","source":53,"target":8,"counts":{"calls":7,"references":3},"total":10},{"id":"53_24","source":53,"target":24,"counts":{"implements":2,"references":19},"total":21},{"id":"53_31","source":53,"target":31,"counts":{"calls":2,"references":17},"total":19},{"id":"54_8","source":54,"target":8,"counts":{"calls":3,"references":3},"total":6},{"id":"54_10","source":54,"target":10,"counts":{"references":4},"total":4},{"id":"54_31","source":54,"target":31,"counts":{"implements":2,"constructs":1,"references":4},"total":7},{"id":"54_50","source":54,"target":50,"counts":{"references":8},"total":8},{"id":"55_8","source":55,"target":8,"counts":{"calls":7,"references":4},"total":11},{"id":"55_25","source":55,"target":25,"counts":{"calls":2,"references":1},"total":3},{"id":"55_26","source":55,"target":26,"counts":{"references":2},"total":2},{"id":"55_27","source":55,"target":27,"counts":{"calls":3,"references":3},"total":6},{"id":"55_31","source":55,"target":31,"counts":{"implements":2,"constructs":1,"references":10},"total":13},{"id":"56_8","source":56,"target":8,"counts":{"calls":9,"references":3},"total":12},{"id":"56_25","source":56,"target":25,"counts":{"calls":1,"references":1},"total":2},{"id":"56_31","source":56,"target":31,"counts":{"calls":2,"implements":2,"references":17},"total":21},{"id":"56_50","source":56,"target":50,"counts":{"references":2},"total":2},{"id":"57_8","source":57,"target":8,"counts":{"calls":7,"references":3},"total":10},{"id":"57_25","source":57,"target":25,"counts":{"calls":1,"references":1},"total":2},{"id":"57_31","source":57,"target":31,"counts":{"calls":2,"implements":2,"references":16},"total":20},{"id":"57_50","source":57,"target":50,"counts":{"references":2},"total":2},{"id":"58_8","source":58,"target":8,"counts":{"calls":6,"references":3},"total":9},{"id":"58_31","source":58,"target":31,"counts":{"calls":3,"implements":2,"references":17},"total":22},{"id":"59_8","source":59,"target":8,"counts":{"calls":5,"references":3},"total":8},{"id":"59_25","source":59,"target":25,"counts":{"calls":1,"references":1},"total":2},{"id":"59_31","source":59,"target":31,"counts":{"calls":1,"implements":2,"references":3},"total":6},{"id":"59_50","source":59,"target":50,"counts":{"references":2},"total":2},{"id":"60_8","source":60,"target":8,"counts":{"calls":2,"references":3},"total":5},{"id":"60_26","source":60,"target":26,"counts":{"references":6},"total":6},{"id":"60_31","source":60,"target":31,"counts":{"calls":1,"implements":2,"references":3},"total":6},{"id":"61_8","source":61,"target":8,"counts":{"calls":7,"references":3},"total":10},{"id":"61_31","source":61,"target":31,"counts":{"calls":3,"implements":2,"references":26},"total":31},{"id":"62_8","source":62,"target":8,"counts":{"calls":7,"references":3},"total":10},{"id":"62_25","source":62,"target":25,"counts":{"calls":1,"references":1},"total":2},{"id":"62_31","source":62,"target":31,"counts":{"calls":1,"implements":2,"references":3},"total":6},{"id":"62_50","source":62,"target":50,"counts":{"references":4},"total":4},{"id":"63_2","source":63,"target":2,"counts":{"constructs":1},"total":1},{"id":"63_3","source":63,"target":3,"counts":{"calls":1,"references":7},"total":8},{"id":"63_8","source":63,"target":8,"counts":{"calls":7,"references":3},"total":10},{"id":"63_10","source":63,"target":10,"counts":{"references":3},"total":3},{"id":"63_15","source":63,"target":15,"counts":{"calls":1,"references":6},"total":7},{"id":"63_30","source":63,"target":30,"counts":{"references":11},"total":11},{"id":"63_31","source":63,"target":31,"counts":{"implements":2,"references":12},"total":14},{"id":"64_4","source":64,"target":4,"counts":{"calls":1,"references":1},"total":2},{"id":"64_8","source":64,"target":8,"counts":{"calls":8,"references":3},"total":11},{"id":"64_26","source":64,"target":26,"counts":{"references":41},"total":41},{"id":"64_30","source":64,"target":30,"counts":{"constructs":1,"references":4},"total":5},{"id":"64_31","source":64,"target":31,"counts":{"calls":5,"implements":2,"constructs":1,"references":38},"total":46},{"id":"64_43","source":64,"target":43,"counts":{"calls":1,"references":1},"total":2},{"id":"64_49","source":64,"target":49,"counts":{"calls":5,"references":5},"total":10},{"id":"65_5","source":65,"target":5,"counts":{"calls":1,"references":1},"total":2},{"id":"65_8","source":65,"target":8,"counts":{"calls":6,"references":3},"total":9},{"id":"65_26","source":65,"target":26,"counts":{"references":5},"total":5},{"id":"65_30","source":65,"target":30,"counts":{"references":1},"total":1},{"id":"65_31","source":65,"target":31,"counts":{"calls":3,"implements":2,"references":9},"total":14},{"id":"66_4","source":66,"target":4,"counts":{"calls":1,"references":1},"total":2},{"id":"66_8","source":66,"target":8,"counts":{"calls":7,"references":3},"total":10},{"id":"66_26","source":66,"target":26,"counts":{"references":8},"total":8},{"id":"66_31","source":66,"target":31,"counts":{"calls":2,"implements":2,"references":12},"total":16},{"id":"67_6","source":67,"target":6,"counts":{"calls":1,"references":1},"total":2},{"id":"67_8","source":67,"target":8,"counts":{"calls":6,"references":3},"total":9},{"id":"67_26","source":67,"target":26,"counts":{"references":4},"total":4},{"id":"67_31","source":67,"target":31,"counts":{"calls":5,"implements":2,"references":8},"total":15},{"id":"67_50","source":67,"target":50,"counts":{"references":4},"total":4},{"id":"68_6","source":68,"target":6,"counts":{"calls":1,"references":1},"total":2},{"id":"68_8","source":68,"target":8,"counts":{"calls":6,"references":5},"total":11},{"id":"68_26","source":68,"target":26,"counts":{"references":7},"total":7},{"id":"68_27","source":68,"target":27,"counts":{"references":2},"total":2},{"id":"68_31","source":68,"target":31,"counts":{"calls":5,"implements":2,"references":24},"total":31},{"id":"68_50","source":68,"target":50,"counts":{"references":12},"total":12},{"id":"69_6","source":69,"target":6,"counts":{"calls":8,"references":1},"total":9},{"id":"69_8","source":69,"target":8,"counts":{"calls":22,"references":3},"total":25},{"id":"69_31","source":69,"target":31,"counts":{"calls":2,"implements":2,"constructs":1,"references":43},"total":48},{"id":"69_50","source":69,"target":50,"counts":{"references":66},"total":66},{"id":"69_68","source":69,"target":68,"counts":{"references":4},"total":4},{"id":"70_4","source":70,"target":4,"counts":{"calls":1,"references":1},"total":2},{"id":"70_8","source":70,"target":8,"counts":{"calls":7,"references":1},"total":8},{"id":"70_9","source":70,"target":9,"counts":{"implements":2,"references":2},"total":4},{"id":"70_13","source":70,"target":13,"counts":{"calls":2,"references":1},"total":3},{"id":"70_27","source":70,"target":27,"counts":{"references":1},"total":1},{"id":"70_31","source":70,"target":31,"counts":{"calls":1,"references":4},"total":5},{"id":"71_9","source":71,"target":9,"counts":{"calls":1,"references":1},"total":2},{"id":"72_31","source":72,"target":31,"counts":{"references":16},"total":16},{"id":"72_54","source":72,"target":54,"counts":{"references":1},"total":1},{"id":"72_55","source":72,"target":55,"counts":{"references":1},"total":1},{"id":"72_56","source":72,"target":56,"counts":{"references":1},"total":1},{"id":"72_57","source":72,"target":57,"counts":{"references":1},"total":1},{"id":"72_58","source":72,"target":58,"counts":{"references":1},"total":1},{"id":"72_59","source":72,"target":59,"counts":{"references":1},"total":1},{"id":"72_60","source":72,"target":60,"counts":{"references":1},"total":1},{"id":"72_61","source":72,"target":61,"counts":{"references":1},"total":1},{"id":"72_62","source":72,"target":62,"counts":{"references":1},"total":1},{"id":"72_63","source":72,"target":63,"counts":{"references":1},"total":1},{"id":"72_64","source":72,"target":64,"counts":{"references":1},"total":1},{"id":"72_65","source":72,"target":65,"counts":{"references":1},"total":1},{"id":"72_66","source":72,"target":66,"counts":{"references":1},"total":1},{"id":"72_67","source":72,"target":67,"counts":{"references":1},"total":1},{"id":"72_68","source":72,"target":68,"counts":{"references":1},"total":1},{"id":"72_69","source":72,"target":69,"counts":{"references":1},"total":1},{"id":"73_4","source":73,"target":4,"counts":{"implements":3,"references":2},"total":5},{"id":"73_5","source":73,"target":5,"counts":{"implements":2,"references":2},"total":4},{"id":"73_6","source":73,"target":6,"counts":{"implements":2,"references":2},"total":4},{"id":"74_11","source":74,"target":11,"counts":{"implements":2,"references":6},"total":8},{"id":"75_8","source":75,"target":8,"counts":{"calls":8,"references":2},"total":10},{"id":"75_12","source":75,"target":12,"counts":{"implements":2,"references":3},"total":5},{"id":"76_12","source":76,"target":12,"counts":{"calls":2,"implements":2,"references":4},"total":8},{"id":"76_22","source":76,"target":22,"counts":{"implements":2,"references":2},"total":4},{"id":"78_8","source":78,"target":8,"counts":{"calls":2,"implements":7,"references":7},"total":16},{"id":"78_11","source":78,"target":11,"counts":{"calls":1,"references":2},"total":3},{"id":"79_12","source":79,"target":12,"counts":{"implements":2,"references":4},"total":6},{"id":"80_6","source":80,"target":6,"counts":{"calls":2,"references":2},"total":4},{"id":"80_7","source":80,"target":7,"counts":{"calls":2,"references":1},"total":3},{"id":"80_10","source":80,"target":10,"counts":{"references":2},"total":2},{"id":"80_12","source":80,"target":12,"counts":{"calls":1,"implements":2,"references":6},"total":9},{"id":"80_33","source":80,"target":33,"counts":{"calls":1,"references":1},"total":2},{"id":"81_12","source":81,"target":12,"counts":{"calls":1,"implements":2,"references":4},"total":7},{"id":"82_10","source":82,"target":10,"counts":{"calls":1,"references":1},"total":2},{"id":"82_12","source":82,"target":12,"counts":{"calls":1,"references":1},"total":2},{"id":"82_13","source":82,"target":13,"counts":{"calls":5,"references":1},"total":6},{"id":"83_1","source":83,"target":1,"counts":{"calls":1,"references":2},"total":3},{"id":"83_7","source":83,"target":7,"counts":{"calls":1,"references":1},"total":2},{"id":"83_12","source":83,"target":12,"counts":{"calls":1,"references":1},"total":2},{"id":"83_14","source":83,"target":14,"counts":{"calls":1,"implements":3,"constructs":1,"references":4},"total":9},{"id":"83_23","source":83,"target":23,"counts":{"implements":2,"references":3},"total":5},{"id":"83_33","source":83,"target":33,"counts":{"calls":3,"references":3},"total":6},{"id":"84_12","source":84,"target":12,"counts":{"references":1},"total":1},{"id":"84_22","source":84,"target":22,"counts":{"references":1},"total":1},{"id":"84_76","source":84,"target":76,"counts":{"references":2},"total":2},{"id":"85_8","source":85,"target":8,"counts":{"calls":1,"references":1},"total":2},{"id":"85_10","source":85,"target":10,"counts":{"references":4},"total":4},{"id":"85_13","source":85,"target":13,"counts":{"implements":4,"references":6},"total":10},{"id":"85_32","source":85,"target":32,"counts":{"references":4},"total":4},{"id":"86_5","source":86,"target":5,"counts":{"calls":1,"references":1},"total":2},{"id":"86_8","source":86,"target":8,"counts":{"calls":3,"references":1},"total":4},{"id":"86_12","source":86,"target":12,"counts":{"calls":1,"references":1},"total":2},{"id":"86_13","source":86,"target":13,"counts":{"calls":2,"constructs":2,"references":3},"total":7},{"id":"86_15","source":86,"target":15,"counts":{"implements":2,"references":11},"total":13},{"id":"86_33","source":86,"target":33,"counts":{"calls":1,"references":1},"total":2},{"id":"86_39","source":86,"target":39,"counts":{"references":3},"total":3},{"id":"87_15","source":87,"target":15,"counts":{"calls":1,"implements":2,"references":4},"total":7},{"id":"88_1","source":88,"target":1,"counts":{"calls":1},"total":1},{"id":"88_8","source":88,"target":8,"counts":{"calls":5,"references":1},"total":6},{"id":"88_14","source":88,"target":14,"counts":{"references":4},"total":4},{"id":"88_31","source":88,"target":31,"counts":{"implements":8,"references":23},"total":31},{"id":"88_83","source":88,"target":83,"counts":{"calls":6,"constructs":2},"total":8},{"id":"89_10","source":89,"target":10,"counts":{"implements":5,"references":6},"total":11},{"id":"89_12","source":89,"target":12,"counts":{"implements":6,"references":6},"total":12},{"id":"89_21","source":89,"target":21,"counts":{"implements":2,"references":3},"total":5},{"id":"89_31","source":89,"target":31,"counts":{"implements":4,"references":6},"total":10},{"id":"89_39","source":89,"target":39,"counts":{"implements":3,"references":5},"total":8},{"id":"89_42","source":89,"target":42,"counts":{"calls":1,"references":1},"total":2},{"id":"93_10","source":93,"target":10,"counts":{"references":5},"total":5},{"id":"93_91","source":93,"target":91,"counts":{"references":2},"total":2},{"id":"93_92","source":93,"target":92,"counts":{"calls":2,"references":4},"total":6},{"id":"95_8","source":95,"target":8,"counts":{"calls":1,"references":1},"total":2},{"id":"95_31","source":95,"target":31,"counts":{"calls":1,"references":10},"total":11},{"id":"95_91","source":95,"target":91,"counts":{"references":2},"total":2},{"id":"96_5","source":96,"target":5,"counts":{"calls":1,"references":1},"total":2},{"id":"96_8","source":96,"target":8,"counts":{"calls":16,"references":1},"total":17},{"id":"96_18","source":96,"target":18,"counts":{"constructs":1,"references":12},"total":13},{"id":"96_19","source":96,"target":19,"counts":{"calls":1,"references":1},"total":2},{"id":"96_24","source":96,"target":24,"counts":{"calls":1,"references":5},"total":6},{"id":"96_91","source":96,"target":91,"counts":{"references":2},"total":2},{"id":"97_11","source":97,"target":11,"counts":{"calls":1,"references":2},"total":3},{"id":"97_20","source":97,"target":20,"counts":{"calls":1,"references":1},"total":2},{"id":"97_25","source":97,"target":25,"counts":{"calls":1,"references":1},"total":2},{"id":"97_31","source":97,"target":31,"counts":{"calls":1,"references":1},"total":2},{"id":"97_35","source":97,"target":35,"counts":{"calls":1},"total":1},{"id":"97_36","source":97,"target":36,"counts":{"calls":1},"total":1},{"id":"97_68","source":97,"target":68,"counts":{"references":2},"total":2},{"id":"98_90","source":98,"target":90,"counts":{"calls":1,"references":1},"total":2},{"id":"98_92","source":98,"target":92,"counts":{"references":1},"total":1},{"id":"98_93","source":98,"target":93,"counts":{"calls":1,"references":1},"total":2},{"id":"98_94","source":98,"target":94,"counts":{"calls":2,"references":2},"total":4},{"id":"98_95","source":98,"target":95,"counts":{"calls":1,"references":3},"total":4},{"id":"98_96","source":98,"target":96,"counts":{"calls":1,"references":3},"total":4},{"id":"99_10","source":99,"target":10,"counts":{"references":1},"total":1},{"id":"99_11","source":99,"target":11,"counts":{"calls":1,"references":3},"total":4},{"id":"99_13","source":99,"target":13,"counts":{"references":1},"total":1},{"id":"99_32","source":99,"target":32,"counts":{"references":2},"total":2},{"id":"99_34","source":99,"target":34,"counts":{"references":1},"total":1},{"id":"99_37","source":99,"target":37,"counts":{"references":1},"total":1},{"id":"99_74","source":99,"target":74,"counts":{"constructs":1,"references":1},"total":2},{"id":"99_77","source":99,"target":77,"counts":{"references":4},"total":4},{"id":"99_81","source":99,"target":81,"counts":{"calls":1},"total":1},{"id":"99_82","source":99,"target":82,"counts":{"references":4},"total":4},{"id":"100_4","source":100,"target":4,"counts":{"references":2},"total":2},{"id":"100_5","source":100,"target":5,"counts":{"references":2},"total":2},{"id":"100_6","source":100,"target":6,"counts":{"references":2},"total":2},{"id":"100_9","source":100,"target":9,"counts":{"references":1},"total":1},{"id":"100_24","source":100,"target":24,"counts":{"references":1},"total":1},{"id":"100_31","source":100,"target":31,"counts":{"references":1},"total":1},{"id":"100_43","source":100,"target":43,"counts":{"references":1},"total":1},{"id":"100_53","source":100,"target":53,"counts":{"references":1},"total":1},{"id":"100_70","source":100,"target":70,"counts":{"references":1},"total":1},{"id":"100_72","source":100,"target":72,"counts":{"calls":1,"references":1},"total":2},{"id":"100_73","source":100,"target":73,"counts":{"references":4},"total":4},{"id":"101_25","source":101,"target":25,"counts":{"references":1},"total":1},{"id":"101_27","source":101,"target":27,"counts":{"references":1},"total":1},{"id":"101_28","source":101,"target":28,"counts":{"references":1},"total":1},{"id":"101_29","source":101,"target":29,"counts":{"references":1},"total":1},{"id":"101_31","source":101,"target":31,"counts":{"references":2},"total":2},{"id":"101_38","source":101,"target":38,"counts":{"calls":1,"references":1},"total":2},{"id":"101_41","source":101,"target":41,"counts":{"references":1},"total":1},{"id":"101_45","source":101,"target":45,"counts":{"references":1},"total":1},{"id":"101_46","source":101,"target":46,"counts":{"references":1},"total":1},{"id":"101_47","source":101,"target":47,"counts":{"references":1},"total":1},{"id":"101_52","source":101,"target":52,"counts":{"calls":1,"references":1},"total":2},{"id":"101_75","source":101,"target":75,"counts":{"calls":1,"references":1},"total":2},{"id":"101_78","source":101,"target":78,"counts":{"calls":1,"references":1},"total":2},{"id":"101_79","source":101,"target":79,"counts":{"calls":1,"references":1},"total":2},{"id":"101_80","source":101,"target":80,"counts":{"calls":1,"references":1},"total":2},{"id":"101_83","source":101,"target":83,"counts":{"calls":1,"references":1},"total":2},{"id":"101_84","source":101,"target":84,"counts":{"calls":1,"references":1},"total":2},{"id":"101_85","source":101,"target":85,"counts":{"calls":1,"references":1},"total":2},{"id":"101_86","source":101,"target":86,"counts":{"calls":1,"references":1},"total":2},{"id":"101_87","source":101,"target":87,"counts":{"calls":1,"references":1},"total":2},{"id":"101_88","source":101,"target":88,"counts":{"references":2},"total":2},{"id":"101_98","source":101,"target":98,"counts":{"calls":1,"references":1},"total":2},{"id":"101_100","source":101,"target":100,"counts":{"calls":1,"references":1},"total":2},{"id":"102_71","source":102,"target":71,"counts":{"references":1},"total":1},{"id":"102_79","source":102,"target":79,"counts":{"calls":1,"references":1},"total":2},{"id":"102_89","source":102,"target":89,"counts":{"calls":1,"references":1},"total":2},{"id":"102_91","source":102,"target":91,"counts":{"calls":1,"references":1},"total":2},{"id":"102_101","source":102,"target":101,"counts":{"calls":1,"references":1},"total":2},{"id":"103_97","source":103,"target":97,"counts":{"calls":2},"total":2},{"id":"103_98","source":103,"target":98,"counts":{"calls":1,"references":1},"total":2},{"id":"103_99","source":103,"target":99,"counts":{"calls":1,"references":2},"total":3},{"id":"103_102","source":103,"target":102,"counts":{"calls":1,"references":1},"total":2}],"summary":{"fileCount":103,"dependencyCount":288,"occurrenceCount":1774}};
+    const SVG_NS = "http://www.w3.org/2000/svg";
+    const KINDS = ["calls", "inherits", "implements", "constructs", "references"];
+    const KIND_LABELS = {
+      calls: "Calls",
+      inherits: "Inherits",
+      implements: "Implements",
+      constructs: "Constructs",
+      references: "References"
+    };
+
+    const NODE_WIDTH = 224;
+    const NODE_HEIGHT = 34;
+    const COLUMN_GAP = 314;
+    const ROW_GAP = 43;
+    const MARGIN_X = 72;
+    const MARGIN_Y = 56;
+
+    const nodeById = new Map(GRAPH.files.map((node) => [node.id, { ...node }]));
+    const dependencyById = new Map(
+      GRAPH.dependencies.map((dependency) => [dependency.id, dependency])
+    );
+
+    function edgeSelectedWeight(edge, selectedKinds) {
+      return KINDS.reduce(
+        (total, kind) => total + (selectedKinds.has(kind) ? (edge.counts[kind] || 0) : 0),
+        0
+      );
+    }
+
+    function dominantKind(edge, selectedKinds) {
+      let selectedKind = "references";
+      let selectedCount = -1;
+      for (const kind of KINDS) {
+        if (!selectedKinds.has(kind)) continue;
+        const count = edge.counts[kind] || 0;
+        if (count > selectedCount) {
+          selectedKind = kind;
+          selectedCount = count;
+        }
+      }
+      return selectedKind;
+    }
+
+    function mean(values) {
+      if (!values.length) return Number.POSITIVE_INFINITY;
+      return values.reduce((sum, value) => sum + value, 0) / values.length;
+    }
+
+    function computeLayout() {
+      const dependenciesByConsumer = new Map();
+      const consumersByDependency = new Map();
+
+      for (const node of GRAPH.files) {
+        dependenciesByConsumer.set(node.id, []);
+        consumersByDependency.set(node.id, []);
+      }
+
+      for (const edge of GRAPH.dependencies) {
+        dependenciesByConsumer.get(edge.source).push(edge.target);
+        consumersByDependency.get(edge.target).push(edge.source);
+      }
+
+      const depth = new Map();
+      for (const node of [...GRAPH.files].sort((left, right) => left.id - right.id)) {
+        const dependencies = dependenciesByConsumer.get(node.id);
+        const nodeDepth = dependencies.length
+          ? Math.max(...dependencies.map((id) => (depth.get(id) || 0) + 1))
+          : 0;
+        depth.set(node.id, nodeDepth);
+      }
+
+      const maximumDepth = Math.max(...depth.values());
+      const layers = Array.from({ length: maximumDepth + 1 }, () => []);
+      for (const node of GRAPH.files) {
+        layers[depth.get(node.id)].push(node.id);
+      }
+      for (const layer of layers) {
+        layer.sort((left, right) => left - right);
+      }
+
+      const positionMap = () => {
+        const positions = new Map();
+        layers.forEach((layer) => {
+          layer.forEach((id, index) => positions.set(id, index));
+        });
+        return positions;
+      };
+
+      for (let iteration = 0; iteration < 8; iteration += 1) {
+        let positions = positionMap();
+        for (let level = 1; level < layers.length; level += 1) {
+          layers[level].sort((left, right) => {
+            const leftScore = mean(
+              dependenciesByConsumer.get(left).map((id) => positions.get(id))
+            );
+            const rightScore = mean(
+              dependenciesByConsumer.get(right).map((id) => positions.get(id))
+            );
+            return leftScore - rightScore || left - right;
+          });
+        }
+
+        positions = positionMap();
+        for (let level = layers.length - 2; level >= 0; level -= 1) {
+          layers[level].sort((left, right) => {
+            const leftScore = mean(
+              consumersByDependency.get(left).map((id) => positions.get(id))
+            );
+            const rightScore = mean(
+              consumersByDependency.get(right).map((id) => positions.get(id))
+            );
+            return leftScore - rightScore || left - right;
+          });
+        }
+      }
+
+      const maximumLayerSize = Math.max(...layers.map((layer) => layer.length));
+      const graphHeight = MARGIN_Y * 2 + Math.max(1, maximumLayerSize - 1) * ROW_GAP;
+      const graphWidth = MARGIN_X * 2 + maximumDepth * COLUMN_GAP + NODE_WIDTH;
+
+      layers.forEach((layer, level) => {
+        const layerOffset = ((maximumLayerSize - layer.length) * ROW_GAP) / 2;
+        layer.forEach((id, index) => {
+          const node = nodeById.get(id);
+          node.level = level;
+          node.x = MARGIN_X + NODE_WIDTH / 2 + level * COLUMN_GAP;
+          node.y = MARGIN_Y + layerOffset + index * ROW_GAP;
+        });
+      });
+
+      const bundleTargets = new Map();
+      for (const edge of GRAPH.dependencies) {
+        const dependency = nodeById.get(edge.target);
+        const consumer = nodeById.get(edge.source);
+        const key = `${dependency.id}|${consumer.level}`;
+        if (!bundleTargets.has(key)) bundleTargets.set(key, []);
+        bundleTargets.get(key).push(consumer.y);
+      }
+
+      for (const edge of GRAPH.dependencies) {
+        const dependency = nodeById.get(edge.target);
+        const consumer = nodeById.get(edge.source);
+        const x1 = dependency.x + NODE_WIDTH / 2;
+        const y1 = dependency.y;
+        const x2 = consumer.x - NODE_WIDTH / 2;
+        const y2 = consumer.y;
+        const middleX = x1 + (x2 - x1) * 0.5;
+        const bundleKey = `${dependency.id}|${consumer.level}`;
+        const bundleY = mean(bundleTargets.get(bundleKey));
+        edge.path = [
+          `M ${x1} ${y1}`,
+          `C ${x1 + 48} ${y1}, ${middleX - 42} ${bundleY}, ${middleX} ${bundleY}`,
+          `C ${middleX + 42} ${bundleY}, ${x2 - 48} ${y2}, ${x2} ${y2}`
+        ].join(" ");
+      }
+
+      return {
+        layers,
+        depth,
+        dependenciesByConsumer,
+        consumersByDependency,
+        width: graphWidth,
+        height: graphHeight
+      };
+    }
+
+    const layout = computeLayout();
+    const svg = document.getElementById("graph");
+    const scene = document.getElementById("scene");
+    const viewport = document.getElementById("viewport");
+    const tooltip = document.getElementById("tooltip");
+    const toolbarStatus = document.getElementById("toolbar-status");
+    const details = document.getElementById("details");
+    const searchInput = document.getElementById("search");
+    const searchStatus = document.getElementById("search-status");
+    const minimumCount = document.getElementById("minimum-count");
+    const minimumCountValue = document.getElementById("minimum-count-value");
+
+    const edgeElements = new Map();
+    const nodeElements = new Map();
+    let selectedNodeId = null;
+    let visibleEdgeIds = new Set();
+    let transform = { x: 0, y: 0, scale: 1 };
+    let dragState = null;
+
+    function createSvgElement(name, attributes = {}) {
+      const element = document.createElementNS(SVG_NS, name);
+      for (const [key, value] of Object.entries(attributes)) {
+        element.setAttribute(key, String(value));
+      }
+      return element;
+    }
+
+    function truncateFileName(name) {
+      if (name.length <= 29) return name;
+      return `${name.slice(0, 25)}…${name.slice(-3)}`;
+    }
+
+    function selectedKinds() {
+      return new Set(
+        KINDS.filter((kind) => document.getElementById(`kind-${kind}`).checked)
+      );
+    }
+
+    function formatNumber(value) {
+      return new Intl.NumberFormat().format(value);
+    }
+
+    function showTooltip(event, title, lines) {
+      tooltip.replaceChildren();
+      const heading = document.createElement("strong");
+      heading.textContent = title;
+      tooltip.appendChild(heading);
+      for (const line of lines) {
+        const row = document.createElement("div");
+        row.textContent = line;
+        tooltip.appendChild(row);
+      }
+      tooltip.style.display = "block";
+      moveTooltip(event);
+    }
+
+    function moveTooltip(event) {
+      const padding = 14;
+      const width = tooltip.offsetWidth;
+      const height = tooltip.offsetHeight;
+      const bounds = event.currentTarget?.getBoundingClientRect?.();
+      const clientX = Number.isFinite(event.clientX)
+        ? event.clientX
+        : (bounds ? bounds.left + bounds.width / 2 : padding);
+      const clientY = Number.isFinite(event.clientY)
+        ? event.clientY
+        : (bounds ? bounds.top + bounds.height / 2 : padding);
+      const left = Math.min(clientX + padding, window.innerWidth - width - padding);
+      const top = Math.min(clientY + padding, window.innerHeight - height - padding);
+      tooltip.style.left = `${Math.max(padding, left)}px`;
+      tooltip.style.top = `${Math.max(padding, top)}px`;
+    }
+
+    function hideTooltip() {
+      tooltip.style.display = "none";
+    }
+
+    function renderGraph() {
+      const edgeLayer = createSvgElement("g", { "aria-label": "Dependencies" });
+      const labelLayer = createSvgElement("g", { "aria-hidden": "true" });
+      const nodeLayer = createSvgElement("g", { "aria-label": "F# files" });
+      scene.append(edgeLayer, labelLayer, nodeLayer);
+
+      layout.layers.forEach((layer, level) => {
+        const label = createSvgElement("text", {
+          class: "level-label",
+          x: MARGIN_X + NODE_WIDTH / 2 + level * COLUMN_GAP,
+          y: 22,
+          "text-anchor": "middle"
+        });
+        label.textContent = `Level ${level} · ${layer.length} file${layer.length === 1 ? "" : "s"}`;
+        labelLayer.appendChild(label);
+      });
+
+      for (const edge of GRAPH.dependencies) {
+        const path = createSvgElement("path", {
+          class: "edge kind-references",
+          d: edge.path,
+          tabindex: "0"
+        });
+        path.dataset.edgeId = edge.id;
+        path.addEventListener("pointerenter", (event) => {
+          const consumer = nodeById.get(edge.source);
+          const dependency = nodeById.get(edge.target);
+          const lines = KINDS
+            .filter((kind) => edge.counts[kind])
+            .map((kind) => `${KIND_LABELS[kind]}: ${formatNumber(edge.counts[kind])}`);
+          showTooltip(
+            event,
+            `${consumer.name} depends on ${dependency.name}`,
+            [consumer.path, dependency.path, ...lines]
+          );
+        });
+        path.addEventListener("pointermove", moveTooltip);
+        path.addEventListener("pointerleave", hideTooltip);
+        path.addEventListener("focus", (event) => {
+          const consumer = nodeById.get(edge.source);
+          const dependency = nodeById.get(edge.target);
+          showTooltip(
+            event,
+            `${consumer.name} depends on ${dependency.name}`,
+            [`Total occurrences: ${formatNumber(edge.total)}`]
+          );
+        });
+        path.addEventListener("blur", hideTooltip);
+        edgeLayer.appendChild(path);
+        edgeElements.set(edge.id, path);
+      }
+
+      for (const node of GRAPH.files) {
+        const positioned = nodeById.get(node.id);
+        const group = createSvgElement("g", {
+          class: "node",
+          transform: `translate(${positioned.x} ${positioned.y})`,
+          tabindex: "0",
+          role: "button",
+          "aria-label": `File ${node.id}: ${node.path}`
+        });
+        group.dataset.nodeId = String(node.id);
+
+        const rectangle = createSvgElement("rect", {
+          x: -NODE_WIDTH / 2,
+          y: -NODE_HEIGHT / 2,
+          width: NODE_WIDTH,
+          height: NODE_HEIGHT,
+          rx: 10,
+          ry: 10
+        });
+        const idLabel = createSvgElement("text", {
+          class: "node-id",
+          x: -NODE_WIDTH / 2 + 9,
+          y: 3
+        });
+        idLabel.textContent = String(node.id).padStart(3, "0");
+        const nameLabel = createSvgElement("text", {
+          class: "node-name",
+          x: -NODE_WIDTH / 2 + 38,
+          y: 4
+        });
+        nameLabel.textContent = truncateFileName(node.name);
+
+        group.append(rectangle, idLabel, nameLabel);
+        group.addEventListener("click", (event) => {
+          event.stopPropagation();
+          selectNode(node.id);
+        });
+        group.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            selectNode(node.id);
+          }
+        });
+        group.addEventListener("pointerenter", (event) => {
+          const dependencyCount = GRAPH.dependencies.filter(
+            (edge) => edge.source === node.id
+          ).length;
+          const consumerCount = GRAPH.dependencies.filter(
+            (edge) => edge.target === node.id
+          ).length;
+          showTooltip(event, node.name, [
+            node.path,
+            `Level: ${positioned.level}`,
+            `Dependencies: ${dependencyCount}`,
+            `Dependents: ${consumerCount}`
+          ]);
+        });
+        group.addEventListener("pointermove", moveTooltip);
+        group.addEventListener("pointerleave", hideTooltip);
+        group.addEventListener("focus", (event) => {
+          showTooltip(event, node.name, [node.path]);
+        });
+        group.addEventListener("blur", hideTooltip);
+
+        nodeLayer.appendChild(group);
+        nodeElements.set(node.id, group);
+      }
+    }
+
+    function buildFilters() {
+      const container = document.getElementById("kind-filters");
+      const totals = Object.fromEntries(KINDS.map((kind) => [kind, 0]));
+      for (const edge of GRAPH.dependencies) {
+        for (const kind of KINDS) totals[kind] += edge.counts[kind] || 0;
+      }
+
+      for (const kind of KINDS) {
+        const row = document.createElement("div");
+        row.className = `filter-row kind-${kind}`;
+        const label = document.createElement("label");
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.id = `kind-${kind}`;
+        checkbox.checked = true;
+        checkbox.addEventListener("change", applyFilters);
+        const swatch = document.createElement("span");
+        swatch.className = "swatch";
+        const text = document.createElement("span");
+        text.textContent = KIND_LABELS[kind];
+        label.append(checkbox, swatch, text);
+        const count = document.createElement("span");
+        count.className = "muted";
+        count.textContent = formatNumber(totals[kind]);
+        row.append(label, count);
+        container.appendChild(row);
+      }
+
+      const maximumTotal = Math.max(...GRAPH.dependencies.map((edge) => edge.total));
+      minimumCount.max = String(maximumTotal);
+      minimumCountValue.max = String(maximumTotal);
+      minimumCount.addEventListener("input", () => {
+        minimumCountValue.value = minimumCount.value;
+        applyFilters();
+      });
+      minimumCountValue.addEventListener("input", () => {
+        const value = Math.max(
+          1,
+          Math.min(maximumTotal, Number(minimumCountValue.value) || 1)
+        );
+        minimumCount.value = String(value);
+        minimumCountValue.value = String(value);
+        applyFilters();
+      });
+    }
+
+    function selectionNeighborhood(nodeId) {
+      if (nodeId === null) {
+        return { nodes: new Set(), edges: new Set() };
+      }
+
+      const nodes = new Set([nodeId]);
+      const edges = new Set();
+      const queue = [nodeId];
+
+      while (queue.length) {
+        const current = queue.shift();
+        for (const edge of GRAPH.dependencies) {
+          if (!visibleEdgeIds.has(edge.id)) continue;
+          let next = null;
+          if (edge.source === current) next = edge.target;
+          if (edge.target === current) next = edge.source;
+          if (next === null) continue;
+          edges.add(edge.id);
+          if (!nodes.has(next)) {
+            nodes.add(next);
+            queue.push(next);
+          }
+        }
+      }
+
+      return { nodes, edges };
+    }
+
+    function applyFilters() {
+      const kinds = selectedKinds();
+      const threshold = Math.max(1, Number(minimumCount.value) || 1);
+      const query = searchInput.value.trim().toLocaleLowerCase();
+      const matchingNodeIds = new Set(
+        GRAPH.files
+          .filter((node) => node.path.toLocaleLowerCase().includes(query))
+          .map((node) => node.id)
+      );
+
+      visibleEdgeIds = new Set();
+      for (const edge of GRAPH.dependencies) {
+        const element = edgeElements.get(edge.id);
+        const weight = edgeSelectedWeight(edge, kinds);
+        const visible = weight >= threshold;
+        element.style.display = visible ? "" : "none";
+        if (!visible) continue;
+
+        visibleEdgeIds.add(edge.id);
+        const kind = dominantKind(edge, kinds);
+        element.setAttribute("class", `edge kind-${kind}`);
+        element.style.strokeWidth = String(
+          Math.min(5.5, 0.65 + Math.sqrt(weight) * 0.27)
+        );
+      }
+
+      const neighborhood = selectionNeighborhood(selectedNodeId);
+      for (const node of GRAPH.files) {
+        const element = nodeElements.get(node.id);
+        const isSelected = node.id === selectedNodeId;
+        const isRelated = selectedNodeId !== null && neighborhood.nodes.has(node.id);
+        const matches = query.length > 0 && matchingNodeIds.has(node.id);
+        const dimmedBySelection = selectedNodeId !== null && !isRelated;
+        const dimmedBySearch = query.length > 0 && !matches && selectedNodeId === null;
+        element.classList.toggle("selected", isSelected);
+        element.classList.toggle("related", isRelated && !isSelected);
+        element.classList.toggle("search-match", matches);
+        element.classList.toggle("dimmed", dimmedBySelection || dimmedBySearch);
+      }
+
+      for (const edge of GRAPH.dependencies) {
+        const element = edgeElements.get(edge.id);
+        if (!visibleEdgeIds.has(edge.id)) continue;
+        const related = selectedNodeId !== null && neighborhood.edges.has(edge.id);
+        element.classList.toggle("related", related);
+        element.classList.toggle("dimmed", selectedNodeId !== null && !related);
+      }
+
+      searchStatus.textContent = query.length
+        ? `${formatNumber(matchingNodeIds.size)} matching file${matchingNodeIds.size === 1 ? "" : "s"}`
+        : "Search highlights matching nodes.";
+      toolbarStatus.textContent =
+        `${formatNumber(visibleEdgeIds.size)} of ${formatNumber(GRAPH.summary.dependencyCount)} edges visible`;
+    }
+
+    function appendDetailList(container, headingText, edges, getOtherId) {
+      const heading = document.createElement("h2");
+      heading.style.marginTop = "12px";
+      heading.textContent = `${headingText} (${edges.length})`;
+      container.appendChild(heading);
+
+      if (!edges.length) {
+        const empty = document.createElement("div");
+        empty.className = "muted";
+        empty.style.fontSize = "11px";
+        empty.textContent = "None";
+        container.appendChild(empty);
+        return;
+      }
+
+      const list = document.createElement("ul");
+      list.className = "detail-list";
+      for (const edge of edges.slice(0, 12)) {
+        const other = nodeById.get(getOtherId(edge));
+        const item = document.createElement("li");
+        item.textContent = `${other.id}. ${other.path} · ${formatNumber(edge.total)}`;
+        list.appendChild(item);
+      }
+      if (edges.length > 12) {
+        const item = document.createElement("li");
+        item.textContent = `…and ${edges.length - 12} more`;
+        list.appendChild(item);
+      }
+      container.appendChild(list);
+    }
+
+    function updateDetails() {
+      details.replaceChildren();
+      if (selectedNodeId === null) {
+        details.className = "detail-empty";
+        details.textContent =
+          "Select a node to highlight its dependencies and dependents.";
+        return;
+      }
+
+      details.className = "";
+      const node = nodeById.get(selectedNodeId);
+      const heading = document.createElement("h2");
+      heading.textContent = `${node.id}. ${node.name}`;
+      const path = document.createElement("div");
+      path.className = "detail-path";
+      path.textContent = node.path;
+      const level = document.createElement("div");
+      level.className = "muted";
+      level.style.marginTop = "6px";
+      level.style.fontSize = "11px";
+      level.textContent = `DAG level ${node.level}`;
+      details.append(heading, path, level);
+
+      const dependencies = GRAPH.dependencies
+        .filter((edge) => edge.source === selectedNodeId)
+        .sort((left, right) => right.total - left.total);
+      const dependents = GRAPH.dependencies
+        .filter((edge) => edge.target === selectedNodeId)
+        .sort((left, right) => right.total - left.total);
+
+      appendDetailList(details, "Depends on", dependencies, (edge) => edge.target);
+      appendDetailList(details, "Used by", dependents, (edge) => edge.source);
+    }
+
+    function selectNode(nodeId) {
+      selectedNodeId = selectedNodeId === nodeId ? null : nodeId;
+      updateDetails();
+      applyFilters();
+    }
+
+    function applyTransform() {
+      scene.setAttribute(
+        "transform",
+        `translate(${transform.x} ${transform.y}) scale(${transform.scale})`
+      );
+    }
+
+    function fitGraph() {
+      const width = viewport.clientWidth;
+      const height = viewport.clientHeight;
+      const scale = Math.min(
+        1.2,
+        (width - 36) / layout.width,
+        (height - 36) / layout.height
+      );
+      transform = {
+        scale,
+        x: (width - layout.width * scale) / 2,
+        y: (height - layout.height * scale) / 2
+      };
+      applyTransform();
+    }
+
+    function zoomAt(factor, x = viewport.clientWidth / 2, y = viewport.clientHeight / 2) {
+      const nextScale = Math.max(0.08, Math.min(3.5, transform.scale * factor));
+      transform.x = x - ((x - transform.x) * nextScale) / transform.scale;
+      transform.y = y - ((y - transform.y) * nextScale) / transform.scale;
+      transform.scale = nextScale;
+      applyTransform();
+    }
+
+    function initializeInteractions() {
+      searchInput.addEventListener("input", applyFilters);
+      document.getElementById("clear-selection").addEventListener("click", () => {
+        selectedNodeId = null;
+        searchInput.value = "";
+        updateDetails();
+        applyFilters();
+      });
+      document.getElementById("fit").addEventListener("click", fitGraph);
+      document.getElementById("fit-header").addEventListener("click", fitGraph);
+      document.getElementById("actual-size").addEventListener("click", () => {
+        transform = { scale: 1, x: 24, y: 24 };
+        applyTransform();
+      });
+      document.getElementById("zoom-in").addEventListener("click", () => zoomAt(1.22));
+      document.getElementById("zoom-out").addEventListener("click", () => zoomAt(1 / 1.22));
+
+      svg.addEventListener("click", () => {
+        selectedNodeId = null;
+        updateDetails();
+        applyFilters();
+      });
+
+      viewport.addEventListener(
+        "wheel",
+        (event) => {
+          event.preventDefault();
+          const bounds = viewport.getBoundingClientRect();
+          zoomAt(
+            event.deltaY < 0 ? 1.12 : 1 / 1.12,
+            event.clientX - bounds.left,
+            event.clientY - bounds.top
+          );
+        },
+        { passive: false }
+      );
+
+      viewport.addEventListener("pointerdown", (event) => {
+        if (event.button !== 0) return;
+        dragState = {
+          pointerId: event.pointerId,
+          x: event.clientX,
+          y: event.clientY,
+          originX: transform.x,
+          originY: transform.y
+        };
+        viewport.setPointerCapture(event.pointerId);
+        viewport.classList.add("dragging");
+      });
+
+      viewport.addEventListener("pointermove", (event) => {
+        if (!dragState || dragState.pointerId !== event.pointerId) return;
+        transform.x = dragState.originX + event.clientX - dragState.x;
+        transform.y = dragState.originY + event.clientY - dragState.y;
+        applyTransform();
+      });
+
+      const endDrag = (event) => {
+        if (!dragState || dragState.pointerId !== event.pointerId) return;
+        dragState = null;
+        viewport.classList.remove("dragging");
+      };
+      viewport.addEventListener("pointerup", endDrag);
+      viewport.addEventListener("pointercancel", endDrag);
+
+      const resizeObserver = new ResizeObserver(() => fitGraph());
+      resizeObserver.observe(viewport);
+    }
+
+    function initialize() {
+      document.getElementById("stat-files").textContent =
+        formatNumber(GRAPH.summary.fileCount);
+      document.getElementById("stat-edges").textContent =
+        formatNumber(GRAPH.summary.dependencyCount);
+      document.getElementById("stat-occurrences").textContent =
+        formatNumber(GRAPH.summary.occurrenceCount);
+      document.getElementById("stat-levels").textContent =
+        formatNumber(layout.layers.length);
+
+      renderGraph();
+      buildFilters();
+      initializeInteractions();
+      updateDetails();
+      applyFilters();
+      requestAnimationFrame(fitGraph);
+    }
+
+    initialize();
+  </script>
+</body>
+</html>

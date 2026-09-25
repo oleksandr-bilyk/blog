@@ -12,8 +12,8 @@ My professional [book list at Goodreads](https://www.goodreads.com/review/list/5
 
 ### 2026
 
-* [Semantic Versioning](./posts/2026/2026-09-25-service-extraction-equipment/)
-Foo
+* [Reviewing a 10,000+ Line Service Extraction as a Graph](./posts/2026/2026-09-25-service-extraction-equipment/)
+F# compile-order dependency graphs make a large service-extraction pull request structurally reviewable by showing the extracted service as a coherent subgraph.
 
 ### 2022
 
