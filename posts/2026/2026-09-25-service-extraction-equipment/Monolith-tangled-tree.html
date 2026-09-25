@@ -520,31 +520,78 @@
       }
     }
 
-    details.graph-summary > summary {
+    .workspace {
+      grid-template-columns: auto minmax(0, 1fr);
+    }
+
+    details.graph-controls {
+      width: 320px;
+      padding: 0;
+      transition: width 160ms ease;
+    }
+
+    details.graph-controls:not([open]) {
+      width: 44px;
+      overflow: hidden;
+    }
+
+    details.graph-controls > summary {
       display: flex;
       align-items: center;
       justify-content: space-between;
       cursor: pointer;
       list-style: none;
+      padding: 14px;
       font-size: 13px;
       font-weight: 650;
     }
 
-    details.graph-summary > summary::-webkit-details-marker {
+    details.graph-controls > summary::-webkit-details-marker {
       display: none;
     }
 
-    details.graph-summary > summary::after {
+    details.graph-controls > summary::after {
       color: var(--cp-text-muted);
       content: "▸";
     }
 
-    details.graph-summary[open] > summary {
-      margin-bottom: 8px;
+    details.graph-controls:not([open]) > summary {
+      height: 100%;
+      justify-content: flex-end;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
     }
 
-    details.graph-summary[open] > summary::after {
+    details.graph-controls[open] > summary {
+      border-bottom: 1px solid var(--cp-border);
+    }
+
+    details.graph-controls[open] > summary::after {
       content: "▾";
+    }
+
+    .graph-controls-content {
+      padding: 0 14px 14px;
+    }
+
+    @media (max-width: 900px) {
+      .workspace {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 72vh;
+      }
+
+      details.graph-controls,
+      details.graph-controls:not([open]) {
+        width: auto;
+        max-height: 44vh;
+      }
+
+      details.graph-controls:not([open]) > summary {
+        height: auto;
+        justify-content: space-between;
+        writing-mode: horizontal-tb;
+        transform: none;
+      }
     }
 
   </style>
@@ -565,9 +612,11 @@
     </header>
 
     <main class="workspace">
-      <aside class="sidebar" aria-label="Graph controls">
-        <details class="section graph-summary">
-          <summary>Graph summary</summary>
+      <details class="sidebar graph-controls" aria-label="Graph controls">
+        <summary>Graph controls</summary>
+        <div class="graph-controls-content">
+        <section class="section">
+          <h2>Graph summary</h2>
           <div class="stats">
             <div class="stat">
               <div class="stat-value" id="stat-files">0</div>
@@ -586,7 +635,7 @@
               <div class="stat-label">DAG levels</div>
             </div>
           </div>
-        </details>
+        </section>
 
         <section class="section">
           <h2>Find a file</h2>
@@ -619,7 +668,8 @@
             Select a node to highlight its dependencies and dependents.
           </div>
         </section>
-      </aside>
+      </div>
+      </details>
 
       <section class="canvas-card" aria-label="Tangled tree visualization">
         <div class="canvas-toolbar">
