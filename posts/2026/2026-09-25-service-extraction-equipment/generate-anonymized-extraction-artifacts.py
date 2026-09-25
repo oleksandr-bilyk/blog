@@ -500,7 +500,10 @@ def generate_standalone_html(
     render_html = namespace.get("render_html")
     if not callable(load_graph) or not callable(render_html):
         raise RuntimeError("Standalone renderer API is unavailable.")
-    write_text(output_path, render_html(load_graph(graph_path), title))
+    write_text(
+        output_path,
+        render_html(load_graph(graph_path), title, True),
+    )
 
 
 def generate_comparison_html(
@@ -518,6 +521,7 @@ def generate_comparison_html(
         "Subservice Dependency Comparison",
         PUBLIC_SCOPE,
         PUBLIC_DESCRIPTION,
+        True,
     )
 
 

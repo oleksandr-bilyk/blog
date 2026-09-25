@@ -519,6 +519,34 @@
         max-height: 44vh;
       }
     }
+
+    details.graph-summary > summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      list-style: none;
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    details.graph-summary > summary::-webkit-details-marker {
+      display: none;
+    }
+
+    details.graph-summary > summary::after {
+      color: var(--cp-text-muted);
+      content: "▸";
+    }
+
+    details.graph-summary[open] > summary {
+      margin-bottom: 8px;
+    }
+
+    details.graph-summary[open] > summary::after {
+      content: "▾";
+    }
+
   </style>
 </head>
 <body>
@@ -538,8 +566,8 @@
 
     <main class="workspace">
       <aside class="sidebar" aria-label="Graph controls">
-        <section class="section">
-          <h2>Graph summary</h2>
+        <details class="section graph-summary">
+          <summary>Graph summary</summary>
           <div class="stats">
             <div class="stat">
               <div class="stat-value" id="stat-files">0</div>
@@ -558,7 +586,7 @@
               <div class="stat-label">DAG levels</div>
             </div>
           </div>
-        </section>
+        </details>
 
         <section class="section">
           <h2>Find a file</h2>
