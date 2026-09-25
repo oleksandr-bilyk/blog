@@ -527,11 +527,15 @@
     details.graph-controls {
       width: 320px;
       padding: 0;
-      transition: width 160ms ease;
+      transition: width 160ms ease, height 160ms ease;
     }
 
     details.graph-controls:not([open]) {
       width: 44px;
+      min-height: 112px;
+      height: 112px;
+      max-height: 112px;
+      align-self: start;
       overflow: hidden;
     }
 
@@ -556,8 +560,11 @@
     }
 
     details.graph-controls:not([open]) > summary {
-      height: 100%;
-      justify-content: flex-end;
+      width: 44px;
+      min-height: 112px;
+      height: 112px;
+      justify-content: space-between;
+      padding: 10px 0;
       writing-mode: vertical-rl;
       transform: rotate(180deg);
     }
@@ -580,17 +587,16 @@
         grid-template-rows: auto 72vh;
       }
 
-      details.graph-controls,
-      details.graph-controls:not([open]) {
+      details.graph-controls[open] {
         width: auto;
         max-height: 44vh;
       }
 
-      details.graph-controls:not([open]) > summary {
-        height: auto;
-        justify-content: space-between;
-        writing-mode: horizontal-tb;
-        transform: none;
+      details.graph-controls:not([open]) {
+        width: 44px;
+        min-height: 112px;
+        height: 112px;
+        max-height: 112px;
       }
     }
 
@@ -613,7 +619,7 @@
 
     <main class="workspace">
       <details class="sidebar graph-controls" aria-label="Graph controls">
-        <summary>Graph controls</summary>
+        <summary aria-label="Open graph controls" title="Graph controls">Graph controls</summary>
         <div class="graph-controls-content">
         <section class="section">
           <h2>Graph summary</h2>
