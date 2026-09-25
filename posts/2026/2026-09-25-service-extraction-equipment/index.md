@@ -1,51 +1,32 @@
-# Reviewing a 10,000+ Line Service Extraction as a Graph
+# x100 acceleration: extracting 10,000+ microservices out of a 100,000-line monolith
 
 ## Thesis
 
-A large extraction pull request is difficult to review because the important
-question is not whether thousands of individual edits look plausible. The
-important question is whether the new service is a coherent architectural
-subgraph with the right boundaries and dependency direction.
+In one PR, I extracted 10,000+ microservices out of a 100,000-line, business-critical, high-complexity monolith. The sub-service is already working in pre-production without bugs.
+`x100` may sound like AI hype, but this post is really about [SOLID](https://simple.wikipedia.org/wiki/SOLID_(object-oriented_design)) and [Functional Core Architecture](https://functional-architecture.org/functional_core_imperative_shell/) in its radical form, on steroids. The sub-service/microservice extraction took just 1 day, but similar transformations of other services, even those with less complexity, took at least a few months (x100 longer). 
 
-F# makes that question unusually visible. Its ordered compilation model turns
-module order into an explicit directed acyclic graph. Combined with small
-modules, algebraic data types, interface-driven composition, pure model logic,
-and isolated side effects, the compiler and project structure make clean
+Instead of slicing the work into tens of PRs that would take months to review, I made one large pull request that would be impossible to review without special "equipment" to guide the reviewer through the code. 
+
+The key ingredients that made it possible are:
+1. The new service is a coherent architectural subgraph with the right boundaries and dependency direction.
+2. The source monolith must be SOLID and use clean [Functional Core Architecture](https://functional-architecture.org/functional_core_imperative_shell/) without compromises.
+3. Microsoft F# was enforcing directed acyclic graph dependencies between modules years before AI became mainstream. Now, it provides stable rails that don't allow AI to produce [AI slop](https://en.wikipedia.org/wiki/AI_slop). 
+ 
+Combined with small modules, algebraic data types, interface-driven composition, pure model logic, 
+and isolated side effects, the compiler and project structure make a clean
 architecture easier to inspect rather than leaving it as an informal diagram.
 
 The article demonstrates how an original graph, an extracted graph, and a
 fixed-layout comparison equipped reviewers to understand the essence of a
 10,000+ line change before reading the detailed diff.
 
-## Audience
-
-- Engineers reviewing large refactors or service extractions.
-- F# developers interested in compile-order architecture.
-- Technical leads looking for practical ways to make clean architecture
-  reviewable.
-- Reviewers who need a reliable entry point into a change too large to read
-  effectively from top to bottom.
-
 ## Interactive dependency graphs
 
-### Monolith dependency graph
+Remark: for reasons, I have anonymized all class names but completely preserved the shape of the graph and types of dependencies between its nodes. This will help you understand the key idea without disclosing confidential project details.
 
-The complete starting architecture provides the context for understanding which
-capabilities belong to the extracted service.
+### Original monolith subservice dependency graph
 
-[Open the Monolith dependency graph in a separate page.](./Monolith-tangled-tree.html)
-
-<iframe
-  src="./Monolith-tangled-tree.html"
-  title="Interactive Monolith dependency graph"
-  style="width: 100%; height: 1000px; border: 0;"
-  sandbox="allow-scripts"
-  allowfullscreen>
-</iframe>
-
-### Original Subservice dependency graph
-
-The original Subservice snapshot retains the broad Monolith shape before
+The original subservice snapshot retains the broad monolith shape before
 unrelated capabilities are removed.
 
 [Open the original Subservice dependency graph in a separate page.](./Subservice-original-tangled-tree.html)
@@ -62,7 +43,7 @@ unrelated capabilities are removed.
 ### Extracted Subservice dependency graph
 
 The destination view recomputes the layout for the smaller, focused service and
-shows its final architecture without the removed regions.
+shows its final architecture without the removed nodes.
 
 [Open the extracted Subservice dependency graph in a separate page.](./Subservice-destination-tangled-tree.html)
 

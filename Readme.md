@@ -12,8 +12,9 @@ My professional [book list at Goodreads](https://www.goodreads.com/review/list/5
 
 ### 2026
 
-* [Reviewing a 10,000+ Line Service Extraction as a Graph](./posts/2026/2026-09-25-service-extraction-equipment/)
-F# compile-order dependency graphs make a large service-extraction pull request structurally reviewable by showing the extracted service as a coherent subgraph.
+* [x100 acceleration: extracting 10,000+ microservices out of a 100,000-line monolith](./posts/2026/2026-09-25-service-extraction-equipment/)
+In one PR, I extracted 10,000+ microservices out of a 100,000-line, business-critical, high-complexity monolith. The sub-service is already working in pre-production without bugs.
+`x100` may sound like AI hype, but this post is really about [SOLID](https://simple.wikipedia.org/wiki/SOLID_(object-oriented_design)) and [Functional Core Architecture](https://functional-architecture.org/functional_core_imperative_shell/) in its radical form, on steroids.
 
 ### 2022
 
