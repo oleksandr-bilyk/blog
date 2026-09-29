@@ -2,18 +2,20 @@
 
 ## Thesis
 
-In one PR, I extracted 10,000+ microservices out of a 100,000-line, business-critical, high-complexity monolith. The sub-service is already working in pre-production without bugs.
-`x100` may sound like AI hype, but this post is really about [SOLID](https://simple.wikipedia.org/wiki/SOLID_(object-oriented_design)) and [Functional Core Architecture](https://functional-architecture.org/functional_core_imperative_shell/) in its radical form, on steroids. The sub-service/microservice extraction took just 1 day, but similar transformations of other services, even those with less complexity, took at least a few months (x100 longer). 
+I'm working on the transformation of the largest CI/CD pipelines service at Microsoft, which supports 100K pipelines. The service runs 100K builds per day and 20K releases per day, and it consumes 800K+ VMs and container agents per day, impacting 50,000 developers at Microsoft.
 
-Instead of slicing the work into tens of PRs that would take months to review, I made one large pull request that would be impossible to review without special "equipment" to guide the reviewer through the code. 
+In one PR, I extracted 10,000+ microservices out of a 100,000-line, business-critical, high-complexity monolith. The sub-service is already working in pre-production without bugs.
+`x100` may sound like AI hype, but this post is really about applying [SOLID](https://simple.wikipedia.org/wiki/SOLID_(object-oriented_design)) and [Functional Core Architecture](https://functional-architecture.org/functional_core_imperative_shell/) in radical form—on steroids. Extracting the sub-service into a microservice took just one day, whereas similar transformations of other services, even less complex ones, took at least a few months (x100 longer).
+
+Instead of slicing the work into dozens of PRs that would take months to review, I created one large pull request that would have been impossible to review without special "equipment" to guide the reviewer through the code.
 
 The key ingredients that made it possible are:
 1. The new service is a coherent architectural subgraph with the right boundaries and dependency direction.
-2. The source monolith must be SOLID and use clean [Functional Core Architecture](https://functional-architecture.org/functional_core_imperative_shell/) without compromises.
-3. Microsoft F# was enforcing directed acyclic graph dependencies between modules years before AI became mainstream. Now, it provides stable rails that don't allow AI to produce [AI slop](https://en.wikipedia.org/wiki/AI_slop). 
+2. The source monolith is SOLID and uses clean [Functional Core Architecture](https://functional-architecture.org/functional_core_imperative_shell/) without compromises.
+3. Microsoft F# enforced directed acyclic graph dependencies between modules years before AI became mainstream. Now, it provides stable rails that prevent AI from producing [AI slop](https://en.wikipedia.org/wiki/AI_slop).
  
 Combined with small modules, algebraic data types, interface-driven composition, pure model logic, 
-and isolated side effects, the compiler and project structure make a clean
+and isolated side effects, the compiler and project structure make clean
 architecture easier to inspect rather than leaving it as an informal diagram.
 
 The article demonstrates how an original graph, an extracted graph, and a
