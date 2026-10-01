@@ -1,4 +1,4 @@
-# x100 acceleration: extracting 10,000+ microservices out of a 100,000-line monolith on SOLID and Functional Core Architecture rails
+# x100 acceleration: splitting 100,000-lines monolith into microservices on SOLID and Functional Core Architecture rails
 
 ## Thesis
 
