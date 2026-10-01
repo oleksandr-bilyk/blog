@@ -1,10 +1,10 @@
-# x100 acceleration: splitting 100,000-lines monolith into microservices on SOLID and Functional Core Architecture rails
+# x100 acceleration: splitting monolith into microservices on SOLID and Functional Core Architecture rails with AI
 
 ## Thesis
 
 I'm working on the transformation of the largest CI/CD pipelines service at Microsoft, which supports 100K pipelines. The service runs 100K builds per day and 20K releases per day, and it consumes 800K+ VMs and container agents per day, impacting 50,000 developers at Microsoft.
 
-In one PR, I extracted 10,000+ microservices out of a 100,000-line, business-critical, high-complexity monolith. The sub-service is already working in pre-production without bugs.
+In one PR, I extracted 10,000+ microservice out of a 100,000-line, business-critical, high-complexity monolith. The sub-service is already working in pre-production without bugs.
 `x100` may sound like AI hype, but this post is really about applying [SOLID](https://simple.wikipedia.org/wiki/SOLID_(object-oriented_design)) and [Functional Core Architecture](https://functional-architecture.org/functional_core_imperative_shell/) in radical form—on steroids. Extracting the sub-service into a microservice took just one day, whereas similar transformations of other services, even less complex ones, took at least a few months (x100 longer).
 
 Instead of slicing the work into dozens of PRs that would take months to review, I created one large pull request that would have been impossible to review without special "equipment" to guide the reviewer through the code.
