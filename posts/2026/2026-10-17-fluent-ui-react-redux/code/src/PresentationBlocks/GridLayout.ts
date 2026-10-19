@@ -1,0 +1,7 @@
+export const rowGapItems = '8px'
+export const rowGapItemsMajor = '12px'
+export const columnGapItems = '8px'
+export const columnGapItemsMajor = '12px'
+export const verticalPanelGap = '12px'
+export const panelBorderPadding = '16px'
+export const contentMaxWidth = '1170px'
