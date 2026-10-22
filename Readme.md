@@ -13,6 +13,9 @@ My professional [100+ book list at Goodreads](https://www.goodreads.com/review/l
 
 ### 2026
 
+* [With CNCF, you must stay fit and be ready to evolve](./posts/2026/2026-10-22-with-cncnf-you-must-stay-fit/)
+All **cloud-native** projects, including Kubernetes, evolve fast. That means not just adding new features but forcing you to stop using old ones.
+
 * [Fluent UI, React, and Redux: a Practical Learning Path](./posts/2026/2026-10-17-fluent-ui-react-redux/index.md)
 A draft learning path through React, Microsoft's open-source Fluent UI, and Redux-style state management, with a standalone fictional portal demo. It explains the project structure, composed reducers, asynchronous operations, themes, shared API contracts, and where Redux Toolkit and Fluent UI v9 fit next.
 
