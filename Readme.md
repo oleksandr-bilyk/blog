@@ -20,7 +20,7 @@ All **cloud-native** projects, including Kubernetes, evolve fast. That means not
 A draft learning path through React, Microsoft's open-source Fluent UI, and Redux-style state management, with a standalone fictional portal demo. It explains the project structure, composed reducers, asynchronous operations, themes, shared API contracts, and where Redux Toolkit and Fluent UI v9 fit next.
 
 * [x100 acceleration: splitting monolith into microservices on SOLID and Functional Core Architecture rails with AI](./posts/2026/2026-09-25-service-extraction-equipment/)
-In one PR, I extracted 10,000+ microservice out of a 100,000-line, business-critical, high-complexity monolith. The sub-service is already working in pre-production without bugs.
+In one PR, I extracted 10,000+  lines of code microservice out of a 100,000-line, business-critical, high-complexity monolith. The sub-service is already working in pre-production without bugs.
 `x100` may sound like AI hype, but this post is really about [SOLID](https://simple.wikipedia.org/wiki/SOLID_(object-oriented_design)) and [Functional Core Architecture](https://functional-architecture.org/functional_core_imperative_shell/) in its radical form, on steroids.
 
 ### 2022
