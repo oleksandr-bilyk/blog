@@ -6,7 +6,7 @@ My professional [100+ book list at Goodreads](https://www.goodreads.com/review/l
 
 ## Pinned Posts
 
-* [x100 acceleration: extracting 10,000+ microservices out of a 100,000-line monolith on SOLID and Functional Core Architecture rails](./posts/2026/2026-09-25-service-extraction-equipment/)
+* [x100 acceleration: splitting monolith into microservices on SOLID and Functional Core Architecture rails with AI](./posts/2026/2026-09-25-service-extraction-equipment/)
 * [From Service Fabric to App Service](./posts/2021/2021-06-30-from-service-fabric-to-app-service/index.md)
 * [Make Your Own Neural Network with F#](./posts/2017/2017-12-14-make-your-own-neural-network-with-fsharp/index.md)
 * [Windows Application Block](./posts/2017/2017-06-04-windows-application-block/index.md)
@@ -20,7 +20,7 @@ All **cloud-native** projects, including Kubernetes, evolve fast. That means not
 A draft learning path through React, Microsoft's open-source Fluent UI, and Redux-style state management, with a standalone fictional portal demo. It explains the project structure, composed reducers, asynchronous operations, themes, shared API contracts, and where Redux Toolkit and Fluent UI v9 fit next.
 
 * [x100 acceleration: splitting monolith into microservices on SOLID and Functional Core Architecture rails with AI](./posts/2026/2026-09-25-service-extraction-equipment/)
-In one PR, I extracted 10,000+  lines of code microservice out of a 100,000-line, business-critical, high-complexity monolith. The sub-service is already working in pre-production without bugs.
+In one PR, I extracted 10,000+ lines of code microservice out of a 100,000-line, business-critical, high-complexity monolith. The sub-service is already working in pre-production without bugs.
 `x100` may sound like AI hype, but this post is really about [SOLID](https://simple.wikipedia.org/wiki/SOLID_(object-oriented_design)) and [Functional Core Architecture](https://functional-architecture.org/functional_core_imperative_shell/) in its radical form, on steroids.
 
 ### 2022
