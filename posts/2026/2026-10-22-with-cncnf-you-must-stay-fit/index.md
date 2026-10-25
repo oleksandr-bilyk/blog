@@ -1,6 +1,6 @@
 # With CNCF, you must stay fit and be ready to evolve
 
-All **cloud-native** projects, including Kubernetes, evolve fast. That means not just adding new features but forcing you to stop using old ones. If you know what a [major semantic version increase](../../2021/2021-12-21-semantic-versioning/index.md) means, you understand what I'm talking about. Breaking changes, my friends. Breaking changes are normal in a fast-moving ecosystem.
+All **cloud-native** projects, including Kubernetes, evolve fast. That means not just adding new features but forcing you to stop using old ones. If you know what a [major semantic version increase](../../2021/2021-12-21-semantic-versioning/index.md) means, you understand what I'm talking about. Breaking changes is part of innovation and will become your friends if to apply to them principles of [continious refactoring](https://www.goodreads.com/book/show/44936.Refactoring). Breaking changes are normal in a fast-moving ecosystem.
 
 I've been using Azure since 2011, but only in the last couple of years did I discover the [Cloud Native Computing Foundation, aka CNCF](https://www.cncf.io/), and projects like Kubernetes and [Dapr](https://dapr.io/). We started simple: [Azure Container Apps, aka ACA](https://learn.microsoft.com/en-us/azure/container-apps/overview), gave us a quick way to develop containerized microservices.
 
