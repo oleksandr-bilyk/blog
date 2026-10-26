@@ -10,6 +10,7 @@ My professional [100+ book list at Goodreads](https://www.goodreads.com/review/l
 * [From Service Fabric to App Service](./posts/2021/2021-06-30-from-service-fabric-to-app-service/index.md)
 * [Make Your Own Neural Network with F#](./posts/2017/2017-12-14-make-your-own-neural-network-with-fsharp/index.md)
 * [Windows Application Block](./posts/2017/2017-06-04-windows-application-block/index.md)
+* [Calxa - jorney from Desktop to Web Service](./posts/2017/2017-01-01-calxa-desktop-to-web/index.md)
 
 ### 2026
 
@@ -54,3 +55,6 @@ This article translates the neural network from Tariq Rashid's *Make Your Own Ne
 
 * [Windows Application Block](./posts/2017/2017-06-04-windows-application-block/index.md)
 My first open-source repository and article. In 2017, I was preparing for the MCSD Windows Application Builder certification and, after more than ten years of desktop development, was very excited about the Windows 10 UWP platform. The article provides an in-depth analysis of the application lifecycle, dependency injection, and navigation. It was an attempt to build a solid application block for advanced UWP MVVM scenarios, including dependency injection with .NET Native without using DI containers.
+
+* [Calxa - jorney from Desktop to Web Service](./posts/2017/2017-01-01-calxa-desktop-to-web/index.md)
+For 10 years I led the development team working with [Calxa Australia Pty Ltd](https://www.calxa.com/) on its budgeting and cash flow forecasting software. Moving that software from desktop to web was part of this work. My role was to lead by example the team through the technical decisions and delivery work behind the transformation.
