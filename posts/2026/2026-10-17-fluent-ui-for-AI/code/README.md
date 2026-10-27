@@ -34,6 +34,29 @@ npm start
 The server binds to loopback only. This is a local teaching app, not a
 production service or internet-facing backend. Stop it with Ctrl+C.
 
+## Debug in VS Code
+
+Open this `code` directory as the VS Code workspace and run `npm ci` once.
+Stop any existing `npm run dev` process so port 5173 is available.
+
+Select **Debug Fluent demo** in **Run and Debug**, then press **F5**.
+The configuration starts the TypeScript server through `tsx` and, once it is
+ready, launches a Chrome debug session for the UI. Google Chrome must be
+installed for automatic browser debugging; backend debugging works without it.
+No build is needed.
+
+Set backend breakpoints in `server/app.ts` and frontend breakpoints in
+`src/IndexModel.ts` (for example, in `updateIndexModel`). Refresh the browser or
+interact with the portal to hit them. The browser's initial requests can arrive
+before its debugger attaches; refresh to debug initialization.
+Stopping the server debug session also stops its browser debug session.
+Restart debugging after backend changes; Vite updates frontend changes as usual.
+
+The configuration inherits environment variables, including `PORT`. To change
+the default permanently for debugging, add an `env` entry such as
+`"env": { "PORT": "5180" }` to `.vscode/launch.json`; the browser follows the
+URL printed by the server.
+
 ## Walkthrough
 
 1. Opening and refreshing requests deliberately waits **five seconds** on the
@@ -112,17 +135,11 @@ Resolution accepts `Completed` or `Rejected` and only pending requests. Invalid
 input returns 400, unknown IDs return 404, and already-resolved items return 409.
 An invalid bulk operation updates none of its rows.
 
-## Checks
+## Build check
+
+This teaching demo does not include automated tests. Check TypeScript and build
+the application with:
 
 ```powershell
-npm test
 npm run build
-npx playwright install chromium
-npm run test:e2e
 ```
-
-Unit/integration tests cover the mock API, validation, atomic updates, composed
-reducers, filters, async failures and settings. Browser tests run the built app on port
-5187 and exercise loading, tabs, filters, panels, bulk outcomes, profile menu,
-settings persistence, retry, mobile layout and absence of external requests.
-Browser-test mutations are isolated in their own server process.

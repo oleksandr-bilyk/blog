@@ -1,5 +1,7 @@
 # Fluent UI, React, and Redux: a Practical Learning Path
 
+
+
 *October 17, 2026 - article draft*
 
 Building a web portal is not only about putting controls on a page. A table

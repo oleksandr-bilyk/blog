@@ -1,0 +1,23 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug Fluent demo",
+            "type": "node",
+            "request": "launch",
+            "runtimeExecutable": "node",
+            "runtimeArgs": ["--import", "tsx"],
+            "program": "${workspaceFolder}/server/index.ts",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "skipFiles": ["<node_internals>/**"],
+            "serverReadyAction": {
+                "pattern": "Fluent demo: (http://127\\.0\\.0\\.1:[0-9]+)",
+                "uriFormat": "%s",
+                "action": "debugWithChrome",
+                "webRoot": "${workspaceFolder}",
+                "killOnServerStop": true
+            }
+        }
+    ]
+}
