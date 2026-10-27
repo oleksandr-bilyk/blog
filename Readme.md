@@ -14,13 +14,10 @@ My professional [100+ book list at Goodreads](https://www.goodreads.com/review/l
 
 ### 2026
 
-* [Fluent Web - from estetics and functional programming to design language]
+* [Fluent Web - from estetics and functional programming to design language](./posts/2026/2026-10-17-fluent-ui/index.md)
 
 * [With CNCF, you must stay fit and be ready to evolve](./posts/2026/2026-10-22-with-cncnf-you-must-stay-fit/)
 All **cloud-native** projects, including Kubernetes, evolve fast. That means not just adding new features but forcing you to stop using old ones.
-
-* [Fluent UI, React, and Redux: a Practical Learning Path](./posts/2026/2026-10-17-fluent-ui-react-redux/index.md)
-A draft learning path through React, Microsoft's open-source Fluent UI, and Redux-style state management, with a standalone fictional portal demo. It explains the project structure, composed reducers, asynchronous operations, themes, shared API contracts, and where Redux Toolkit and Fluent UI v9 fit next.
 
 * [x100 acceleration: splitting monolith into microservices on SOLID and Functional Core Architecture rails with AI](./posts/2026/2026-09-25-service-extraction-equipment/)
 In one PR, I extracted 10,000+ lines of code microservice out of a 100,000-line, business-critical, high-complexity monolith. The sub-service is already working in pre-production without bugs.

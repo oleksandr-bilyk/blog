@@ -4,5 +4,5 @@ My father was man with golden hands, generation of people who could do everthing
 
 // TODO: finish the article
 
-[Windows User Experience Itenraction Guildelines (Windows 7, Vista)](./assets/Windows%20User%20Experience%20Interaction%20Guidelines%20(Windows%207,%20Vista).pdf)
+[Windows User Experience Itenraction Guildelines (Windows 7, Vista)](./assets/windows_user_experience_interaction_guidelines_windows_7_vista.pdf)
 
