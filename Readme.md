@@ -14,6 +14,8 @@ My professional [100+ book list at Goodreads](https://www.goodreads.com/review/l
 
 ### 2026
 
+* [Fluent Web - from estetics and functional programming to design language]
+
 * [With CNCF, you must stay fit and be ready to evolve](./posts/2026/2026-10-22-with-cncnf-you-must-stay-fit/)
 All **cloud-native** projects, including Kubernetes, evolve fast. That means not just adding new features but forcing you to stop using old ones.
 
