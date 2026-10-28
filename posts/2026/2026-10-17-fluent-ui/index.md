@@ -1,28 +1,29 @@
-# Fluent UI - user experience, design language and functional programming
+# Fluent UI - user experience, design language, and functional programming
 
-My father was man with golden hands, generation of people who could do everthing from buld a house to being electronics enhusiast. From young age he was inspiring me doing high quality wood works. My father was teaching me that craft becomes valuable when to apply attension to details. I remember when opened a book about woodworks and the first chapter was about how to keep table clean and instruments sharp. 
+My father was a gifted craftsman, part of a generation of people who could do everything from building a house to tinkering with electronics. From a young age, he inspired me with his high-quality woodworking. My father taught me that craftsmanship becomes valuable through attention to detail. I remember opening a book about woodworking and finding that the first chapter was about keeping the workbench clean and tools sharp.
 
-Later this wisdom resonates with [Steve Jobs](https://www.goodreads.com/book/show/11084145-steve-jobs) childhood experience written by Walter Isaacson. Jobs love to estetics begins from leason that he learned in childhood when his father was explaining him that when crafting wooden waredrobe why it is important to polish hidden side of details that people will not see. Polishing hidden parts if is not a fear or somebody will find not polished parts but spiritual practice that is part of your identity making you knowning that everything was done properly and you may be proud of it no matter what.
+Later, I found this wisdom echoed in the childhood experiences described in Walter Isaacson's biography of [Steve Jobs](https://www.goodreads.com/book/show/11084145-steve-jobs). Jobs's love of aesthetics began with a lesson he learned in childhood, when his father explained why, when crafting a wooden wardrobe, it was important to polish even the hidden surfaces that people would not see. Polishing hidden parts is not about the fear that somebody will discover an unfinished surface, but a spiritual practice that becomes part of your identity: knowing that everything was done properly and that you can be proud of it no matter what.
 
-Serious undustrial UI development when I was leading development in [Calxa](https://www.calxa.com/). Windows Desktop apps had to look shiny Vista glass efects that were extreamly computationally heavy while calculating gradients. It was time when even Cashflow and Budget Forecasting software had to look like piece of art or expensive luxury car with multiple layers of painting. I remember when we with my wife were young laying in bad, selecting WPF pixel shader effects to visualize graphical card accelerated animated transitions between financial data screens - if that could sound crazy, that was time when it was representable to draw financial results as spidometers animated as car ![wpf](./assets/wpf.png)
+My experience with serious, production UI development began when I was leading development at [Calxa](https://www.calxa.com/). Windows desktop apps had to look shiny, with Vista glass effects whose gradient calculations were extremely computationally expensive. It was a time when even cash flow and budget forecasting software had to look like a piece of art or an expensive luxury car with multiple layers of paint. I remember when my wife and I were young, lying in bed, selecting WPF pixel shader effects for GPU-accelerated animated transitions between financial data screens. As crazy as that may sound, it was a time when presenting financial results as animated car speedometers was considered impressive.
 
-Over decade ago, I was enthusiastically learning [Windows User Experience Itenraction Guildelines (Windows 7, Vista)](./assets/windows_user_experience_interaction_guidelines_windows_7_vista.pdf)
- to get Windows Logo certification for software that we were developing. I remember when we were creating short memos for those who didn't have patience to read 900 pages of guidelines. This was real upgrade of my understanding when I and UI enthusiasts who were surounding me started see not just method to impress customer, methodologycal system with deep expertise. 
- 
- I remember when once I had dinner with guy who was big fun of Macbook and he mentioned that Apple also has [Human Interface Guidelines for MacBook](https://developer.apple.com/design/human-interface-guidelines/designing-for-macos). Here is for example [menu bar](https://developer.apple.com/design/human-interface-guidelines/the-menu-bar) demonstratic excelence of Jobs heritage in iPad
+![wpf](./assets/wpf.png)
 
- ![iPad menu bar](./assets/mac_menu_bar.png)
+Over a decade ago, I was enthusiastically studying the [Windows User Experience Interaction Guidelines (Windows 7, Vista)](./assets/windows_user_experience_interaction_guidelines_windows_7_vista.pdf) to get Windows Logo certification for the software we were developing. I remember creating short memos for those who didn't have the patience to read 900 pages of guidelines. This deepened my understanding: the UI enthusiasts around me and I started to see not just a way to impress customers, but a methodical system grounded in deep expertise.
  
- 
- Year were going, Windows Phone and Windows 8 introduced [Metro UI](https://en.wikipedia.org/wiki/Metro_(design_language)) that from radical Windows Vista chrome switched to another extreamisting "content before chrome".
- Windows 8 calculator was looking like child sketch made by 30 minutes of student colledge lab work before-AI era.
- 
- ![](./assets/windows_8_calculator.png).
- 
- Windows Phone content Hub was creative but approach but was not simply ergonomic as iPhone or Android.
- 
- ![](./assets/windows_phone_hub.png)
+I remember once having dinner with a guy who was a big fan of the MacBook, and he mentioned that Apple also has [Human Interface Guidelines for macOS](https://developer.apple.com/design/human-interface-guidelines/designing-for-macos). Here, for example, is the [menu bar](https://developer.apple.com/design/human-interface-guidelines/the-menu-bar), demonstrating the excellence of Jobs's legacy on the iPad.
 
-Windows, layout, text, controls, links, tooltips, progress bars, prompts, notifications, keyboard and mouse, dialog boxes, wizards, error and warnings messages, icons, help - things were modernized but Design Language and User Experience patterns are still serving the same goal. This
+![iPad menu bar](./assets/mac_menu_bar.png)
+ 
+ 
+As the years passed, Windows Phone and Windows 8 introduced [Metro UI](https://en.wikipedia.org/wiki/Metro_(design_language)), which moved from Windows Vista's elaborate chrome to the opposite extreme: "content before chrome".
+The Windows 8 calculator looked like a child's sketch, made in 30 minutes during a college lab session in the pre-AI era.
+ 
+![](./assets/windows_8_calculator.png)
+ 
+The Windows Phone content hub was a creative approach, but it simply wasn't as ergonomic as the iPhone or Android.
+ 
+![](./assets/windows_phone_hub.png)
+
+Windows, layout, text, controls, links, tooltips, progress bars, prompts, notifications, keyboard and mouse interactions, dialog boxes, wizards, error and warning messages, icons, help - these things have been modernized, but design language and user experience patterns still serve the same goal.
 
 // TODO: finish the article
