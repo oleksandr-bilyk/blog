@@ -15,7 +15,7 @@ My professional [100+ book list at Goodreads](https://www.goodreads.com/review/l
 ### 2026
 
 * [Fluent UI - user experience, design language and functional programming](./posts/2026/2026-10-17-fluent-ui/index.md)
-Woodworks, Windows Presentation Foundation, Windows User Experience Itenraction Guildelines, Universal Windows Platform, Steve Jobs, React/Redux functional programming, Microsoft Fluent Web, Fluent AI agentic.
+From woodworks, Windows Presentation Foundation, Windows User Experience Itenraction Guildelines, Universal Windows Platform to React/Redux functional programming, Microsoft Fluent Web, Fluent AI agentic.
 
 * [With CNCF, you must stay fit and be ready to evolve](./posts/2026/2026-10-22-with-cncnf-you-must-stay-fit/)
 All **cloud-native** projects, including Kubernetes, evolve fast. That means not just adding new features but forcing you to stop using old ones.
