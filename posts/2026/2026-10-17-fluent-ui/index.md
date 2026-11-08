@@ -52,5 +52,161 @@ Today, I'm working on the transformation of Microsoft's largest CI/CD pipelines 
 
 By 2026, I'm the main F# developer in Azure Release services, where I've authored hundreds of thousands of lines of F#. F# is a .NET language with roots in OCaml. That's amaizing how expertise and design principles may be connected cross different domains.
 
- 
+Web Application Demo running React, Redux and Fluent Web you may find [on my GitHub](./code/)
+
+### React Redux
+
+React is [the library for web and native user interfaces](https://react.dev/learn).
+Originally react components representing blocks HTML were designed as OOP.
+Modern React is made as functional programming comopnets.
+
+``` jsx
+
+function MyButton() {
+  return (
+    <button>
+      I'm a button
+    </button>
+  );
+}
+
+export default function MyApp() {
+  return (
+    <div>
+      <h1>Welcome to my app</h1>
+      <MyButton />
+    </div>
+  );
+}
+
+```
+
+In our demo app and productional services we are extracting State Logic into a [Reducer](https://react.dev/learn/extracting-state-logic-into-a-reducer).
+
+Components with many state updates spread across many event handlers can get overwhelming. For these cases, you can consolidate all the state update logic outside your component in a single function, called a reducer.
+
+``` ts
+export function updateIndexModel(model: IndexModel, action: IndexAction): IndexModel { 
+    return model // TODO: use action to update model
+}
+
+```
+
+We need to model state and for this purposes we will use methodology from [Domain Modeling Made Functional](https://www.amazon.com/dp/1680502549/?bestFormat=true&k=domain+modeling+made+functional)
+
+![](./assets/domain_modeling_made_functional.png)
+
+Fomain programming modelling approach assumes using algebraic data types using Record Types and Descrimination Unions.
+
+Let's consider Record types on Type Script, F# and Rust
+**Type Script**
+``` ts
+type IndexModel = {
+    initializable: IndexInitialization,
+    application: ApplicationStateModel,
+    lastAction: string,
+}
+```
+
+**F#**
+``` fsharp
+type IndexModel = {
+    initializable: IndexInitialization
+    application: ApplicationStateModel
+    lastAction: string
+}
+```
+
+**Rust**
+``` rust
+type IndexModel = {
+    initializable: IndexInitialization,
+    application: ApplicationStateModel,
+    lastAction: String
+};
+```
+
+Let's consider Descrimination Union types on Type Script, F# and Rust
+
+**Type Script**
+``` ts
+type IndexInitialization =
+    | { state: 'Initializing', version: number }
+    | { state: 'Initialized', version: number }
+    | { state: 'Failed', version: number, errorMessage: string }
+```
+
+**F#**
+``` fsharp
+type IndexInitialization =
+    | Initializing of version: number
+    | Initialized of version: number
+    | Failed of version: int * errorMessage: string
+```
+
+**Rust**
+``` rust
+enum IndexInitialization {
+    Initializing { version: u32 },
+    Initialized { version: u32 },
+    Failed { version: u32, error_message: String },
+}
+```
+
+Let's declare type for initial application state:
+``` ts
+type IndexModel = {
+    initializable: IndexInitialization,
+    application: ApplicationStateModel,
+    lastAction: string,
+}
+```
+and method that constructs initial state prototype:
+``` ts
+function getIndexModelInitial(): IndexModel {
+    return {
+        initializable: { state: 'Initializing', version: 0 },
+        application: getStateInitial(),
+        lastAction: 'Initializing',
+    }
+}
+```
+
+As mentioned above, for state modeling using **functional** approach we used record types and descrimination unions that are quite common practice cross Type Script, F# and Rust.
+
+Howeve, for React Redux Action types we are using Type Script **class** that supports dynamic resolution
+``` ts
+export class ActionIndexInitializationRequested { }
+export class ActionIndexInitialized { constructor(public readonly value: InitializationData) { } }
+export class ActionIndexInitializationFailed { constructor(public readonly errorMessage: string) { } }
+export type IndexAction =
+    | ApplicationAction 
+    | ActionIndexInitializationRequested 
+    | ActionIndexInitialized 
+    | ActionIndexInitializationFailed
+```
+
+And as result we can see reducer method from demo [IndexModel.ts](./code/src/IndexModel.ts)
+``` ts
+export function updateIndexModel(model: IndexModel, action: IndexAction): IndexModel {
+    const lastAction = action.constructor.name
+    if (action instanceof ActionIndexInitializationRequested) {
+        if (model.initializable.state === 'Initializing' ||
+            model.application.screens.home.operation.state === 'Running' ||
+            model.application.screens.customerSettings.operation.state === 'Running') return model
+        return {
+            ...model,
+            initializable: { state: 'Initializing', version: model.initializable.version + 1 },
+            lastAction,
+        }
+    }
+    else if (action instanceof ActionIndexInitialized) {
+    ...
+}
+```
+
+Using Reducers we can build quite complex UI as our demo:
+
+![](./assets/main_screen_dark.png)
+
 // TODO: finish the article
