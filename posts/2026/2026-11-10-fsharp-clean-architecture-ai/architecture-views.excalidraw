@@ -1,0 +1,30 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "copilot",
+  "appState": { "viewBackgroundColor": "#ffffff" },
+  "files": {},
+  "elements": [
+    { "id": "title", "type": "text", "x": 20, "y": 15, "width": 960, "height": 65, "text": "Same application. Two architectural views.", "fontSize": 26, "fontFamily": 2, "textAlign": "center", "verticalAlign": "top", "strokeColor": "#000000" },
+    { "id": "dependency-title", "type": "text", "x": 30, "y": 75, "width": 440, "height": 58, "text": "Clean / onion architecture", "fontSize": 23, "fontFamily": 2, "textAlign": "center", "verticalAlign": "top", "strokeColor": "#000000" },
+    { "id": "flow-title", "type": "text", "x": 530, "y": 75, "width": 440, "height": 58, "text": "Functional core / imperative shell", "fontSize": 23, "fontFamily": 2, "textAlign": "center", "verticalAlign": "top", "strokeColor": "#000000" },
+    { "id": "adapters", "type": "rectangle", "x": 30, "y": 135, "width": 440, "height": 340, "strokeColor": "#1864ab", "backgroundColor": "transparent", "fillStyle": "solid", "strokeWidth": 2, "roundness": { "type": 3 } },
+    { "id": "adapters-label", "type": "text", "x": 40, "y": 157, "width": 420, "height": 50, "text": "Adapters: WebApi + Infrastructure", "fontSize": 20, "fontFamily": 2, "textAlign": "center", "verticalAlign": "top", "strokeColor": "#000000" },
+    { "id": "services", "type": "rectangle", "x": 75, "y": 215, "width": 350, "height": 220, "strokeColor": "#862e9c", "backgroundColor": "transparent", "fillStyle": "solid", "strokeWidth": 2, "roundness": { "type": 3 } },
+    { "id": "services-label", "type": "text", "x": 80, "y": 237, "width": 340, "height": 50, "text": "Services: use cases + contracts", "fontSize": 20, "fontFamily": 2, "textAlign": "center", "verticalAlign": "top", "strokeColor": "#000000" },
+    { "id": "model", "type": "rectangle", "x": 130, "y": 300, "width": 240, "height": 100, "strokeColor": "#2f9e44", "backgroundColor": "#b2f2bb", "fillStyle": "solid", "strokeWidth": 2, "roundness": { "type": 3 }, "boundElements": [{ "type": "text", "id": "model-label" }] },
+    { "id": "model-label", "type": "text", "x": 140, "y": 310, "width": 220, "height": 80, "text": "Model\nPure domain rules", "fontSize": 20, "fontFamily": 2, "textAlign": "center", "verticalAlign": "middle", "strokeColor": "#000000", "containerId": "model" },
+    { "id": "dependency-arrow", "type": "arrow", "x": 42, "y": 350, "width": 78, "height": 0, "points": [[0, 0], [78, 0]], "strokeColor": "#862e9c", "strokeWidth": 3, "startArrowhead": null, "endArrowhead": "arrow" },
+    { "id": "dependency-caption", "type": "text", "x": 30, "y": 496, "width": 440, "height": 48, "text": "Source-code dependencies point inward.", "fontSize": 19, "fontFamily": 2, "textAlign": "center", "verticalAlign": "top", "strokeColor": "#000000" },
+    { "id": "shell", "type": "rectangle", "x": 530, "y": 135, "width": 440, "height": 340, "strokeColor": "#1864ab", "backgroundColor": "transparent", "fillStyle": "solid", "strokeWidth": 2, "roundness": { "type": 3 } },
+    { "id": "shell-label", "type": "text", "x": 540, "y": 157, "width": 420, "height": 50, "text": "Imperative shell", "fontSize": 20, "fontFamily": 2, "textAlign": "center", "verticalAlign": "top", "strokeColor": "#000000" },
+    { "id": "read-label", "type": "text", "x": 540, "y": 195, "width": 420, "height": 48, "text": "Read inputs: storage, clock, requests", "fontSize": 19, "fontFamily": 2, "textAlign": "center", "verticalAlign": "top", "strokeColor": "#000000" },
+    { "id": "read-arrow", "type": "arrow", "x": 750, "y": 225, "width": 0, "height": 25, "points": [[0, 0], [0, 25]], "strokeColor": "#495057", "strokeWidth": 2, "startArrowhead": null, "endArrowhead": "arrow" },
+    { "id": "core", "type": "rectangle", "x": 590, "y": 260, "width": 320, "height": 100, "strokeColor": "#2f9e44", "backgroundColor": "#b2f2bb", "fillStyle": "solid", "strokeWidth": 2, "roundness": { "type": 3 }, "boundElements": [{ "type": "text", "id": "core-label" }] },
+    { "id": "core-label", "type": "text", "x": 600, "y": 270, "width": 300, "height": 80, "text": "Functional core: Model\nFacts in. Decisions out. No I/O.", "fontSize": 20, "fontFamily": 2, "textAlign": "center", "verticalAlign": "middle", "strokeColor": "#000000", "containerId": "core" },
+    { "id": "act-arrow", "type": "arrow", "x": 750, "y": 370, "width": 0, "height": 25, "points": [[0, 0], [0, 25]], "strokeColor": "#495057", "strokeWidth": 2, "startArrowhead": null, "endArrowhead": "arrow" },
+    { "id": "act-label", "type": "text", "x": 540, "y": 411, "width": 420, "height": 48, "text": "Perform effects: save, publish, respond", "fontSize": 19, "fontFamily": 2, "textAlign": "center", "verticalAlign": "top", "strokeColor": "#000000" },
+    { "id": "flow-caption", "type": "text", "x": 530, "y": 496, "width": 440, "height": 48, "text": "Execution flow: read, decide, act.", "fontSize": 19, "fontFamily": 2, "textAlign": "center", "verticalAlign": "top", "strokeColor": "#000000" },
+    { "id": "shared-caption", "type": "text", "x": 20, "y": 540, "width": 960, "height": 45, "text": "The green Model is the same pure core in both views. Composition wires the adapters.", "fontSize": 18, "fontFamily": 2, "textAlign": "center", "verticalAlign": "top", "strokeColor": "#000000" }
+  ]
+}

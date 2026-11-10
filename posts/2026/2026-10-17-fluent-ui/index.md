@@ -209,4 +209,10 @@ Using Reducers we can build quite complex UI as our demo:
 
 ![](./assets/main_screen_dark.png)
 
+### Microsoft Fluent Web
+
+Microsoft `Office` organization (internally known as `M365` or just `Copilot` since 2026) is fast dynamic organization that standartized web development to use [Fluent Web](https://developer.microsoft.com/en-us/fluentui#/) and newer [Fluent Web 2](https://fluent2.microsoft.design/).
+
+Using design language is important because 
+
 // TODO: finish the article

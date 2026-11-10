@@ -14,6 +14,9 @@ My professional [100+ book list at Goodreads](https://www.goodreads.com/review/l
 
 ### 2026
 
+* [Clean architecture, onion architecture, and a functional core: reuse the rules](./posts/2026/2026-11-10-fsharp-clean-architecture-ai/index.md)
+A reusable F# architecture policy for keeping business rules pure, dependencies explicit, and engineers and AI coding assistants consistent across projects.
+
 * [Fluent UI - user experience, design language and functional programming](./posts/2026/2026-10-17-fluent-ui/index.md)
 From woodworks, Windows Presentation Foundation, Windows User Experience Itenraction Guildelines, Universal Windows Platform to React/Redux functional programming, Microsoft Fluent Web, Fluent AI agentic.
 
