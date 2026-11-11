@@ -132,6 +132,4 @@ Copy the file into each adopting repository and reference it from contributor or
 
 > Read the architecture policy. Implement equipment reservation: pure decisions in Model, storage contracts in Services, adapters in Infrastructure, and HTTP mappings in WebApi. Add focused tests, build, and run them.
 
-For billing, replace reservation rules with charge calculations and storage adapters with account/payment adapters. The domain changes; the boundaries stay. Keep project-specific exceptions explicit and update copies deliberately.
-
 The same instruction file can guide an AI assistant across F# projects, keeping architectural expectations explicit from the start.
