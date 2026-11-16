@@ -6,16 +6,15 @@ My professional [100+ book list at Goodreads](https://www.goodreads.com/review/l
 
 ## Pinned Posts
 
+* [# AI instructions: Clean Crchitecture with Functional Core on F# programming langage](./posts/2026/2026-11-10-fsharp-clean-architecture-ai/index.md)
 * [x100 acceleration: splitting monolith into microservices on SOLID and Functional Core Architecture rails with AI](./posts/2026/2026-09-25-service-extraction-equipment/)
-* [From Service Fabric to App Service](./posts/2021/2021-06-30-from-service-fabric-to-app-service/index.md)
 * [Make Your Own Neural Network with F#](./posts/2017/2017-12-14-make-your-own-neural-network-with-fsharp/index.md)
 * [Windows Application Block](./posts/2017/2017-06-04-windows-application-block/index.md)
 * [Calxa - jorney from Desktop to Web Service](./posts/2017/2017-01-01-calxa-desktop-to-web/index.md)
 
 ### 2026
 
-* [Clean architecture, onion architecture, and a functional core: reuse the rules](./posts/2026/2026-11-10-fsharp-clean-architecture-ai/index.md)
-A reusable F# architecture policy for keeping business rules pure, dependencies explicit, and engineers and AI coding assistants consistent across projects.
+* [# AI instructions: Clean Crchitecture with Functional Core on F# programming langage](./posts/2026/2026-11-10-fsharp-clean-architecture-ai/index.md)
 
 * [Fluent UI - user experience, design language and functional programming](./posts/2026/2026-10-17-fluent-ui/index.md)
 From woodworks, Windows Presentation Foundation, Windows User Experience Itenraction Guildelines, Universal Windows Platform to React/Redux functional programming, Microsoft Fluent Web, Fluent AI agentic.

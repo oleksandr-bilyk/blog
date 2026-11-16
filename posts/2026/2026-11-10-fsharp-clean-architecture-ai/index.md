@@ -1,4 +1,4 @@
-# Clean architecture, onion architecture, and a functional core: reuse the rules
+# AI instructions: Clean Crchitecture with Functional Core on F# programming langage
 
 In [my service extraction article](../2026-09-25-service-extraction-equipment/index.md), clean boundaries helped me extract a 10,000+ line microservice from a 100,000-line monolith. The instructions below carry those architectural rules into other F# projects, without carrying the application with them.
 
