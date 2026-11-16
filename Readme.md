@@ -6,7 +6,7 @@ My professional [100+ book list at Goodreads](https://www.goodreads.com/review/l
 
 ## Pinned Posts
 
-* [# AI instructions: Clean Crchitecture with Functional Core on F# programming langage](./posts/2026/2026-11-10-fsharp-clean-architecture-ai/index.md)
+* [# AI instructions: Clean Architecture with Functional Core on F# programming langage](./posts/2026/2026-11-10-fsharp-clean-architecture-ai/index.md)
 * [x100 acceleration: splitting monolith into microservices on SOLID and Functional Core Architecture rails with AI](./posts/2026/2026-09-25-service-extraction-equipment/)
 * [Make Your Own Neural Network with F#](./posts/2017/2017-12-14-make-your-own-neural-network-with-fsharp/index.md)
 * [Windows Application Block](./posts/2017/2017-06-04-windows-application-block/index.md)
