@@ -215,6 +215,7 @@ Microsoft `Office` organization (internally known as `M365` or just `Copilot` si
 
 Using design language is important because like a human language it contains nouns as components, verbs as interaction patters, adjectives as styles and typography. Now with AI we can create Web UI for our backend services in minutes and being able to get professional UI is great instrument.
 
+### Fluent Web v8
 Microsoft Office organiztion open sourced Fluent Web framework used to build own UIs.
 I started using Fluent UI in 2019 and now that is on [deprecation path](https://developer.microsoft.com/en-us/fluentui#/controls/web) while I'm writing this article. 
 Again want to remind that I was looking at Fluent Web from my Windows UI development background and I was looking for patterns that would allow my service web portal look modern good consistent and accessible. It was great way Get Stargted with React, Typography, Theming, Styling (CSS in TypeScript) and reach Componets set.
@@ -228,3 +229,17 @@ For example [Search Box](https://developer.microsoft.com/en-us/fluentui#/control
 * Show code: type script source code to copy/paste sample before AI appeared.
 
 ![](./assets/fluent_web_v8_search.png)
+
+### Fluent v2 (Fluent Web v9)
+
+All modern Office products are using using Fluent Web v9 which is open-sourced as well.
+Fluent Web v9 is slimer, faster and generally perspectively organized.
+* https://fluent2.microsoft.design/ - portal introduces you to key concepts and inspire to start creating.
+* https://github.com/microsoft/fluentui - contains source materials and video trainings.
+* https://storybooks.fluentui.dev/react/ - catalog of components with Best practices included.
+
+## Conclusion
+
+Building UI as well as anything that human interacts with, begins from curiousity, even when AI can generate lots, we need to learn and care about fundamentals to build complex things. 
+
+"Design is not just what it looks like and feels like. Design is how it works." (Steve Jobs)
