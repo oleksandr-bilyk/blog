@@ -50,15 +50,15 @@ Elm took a different path: it is a purely functional language for building web f
 
 Today, I'm working on the transformation of Microsoft's largest CI/CD pipelines service. It supports 100,000 pipelines, runs 100,000 builds and 20,000 releases per day, and uses more than 800,000 VMs and container agents daily, serving 50,000 developers at Microsoft.
 
-By 2026, I'm the main F# developer in Azure Release services, where I've authored hundreds of thousands of lines of F#. F# is a .NET language with roots in OCaml. That's amaizing how expertise and design principles may be connected cross different domains.
+By 2026, I'm the main F# developer in Azure Release services, where I've authored hundreds of thousands of lines of F#. F# is a .NET language with roots in OCaml. It's amazing how expertise and design principles can connect across different domains.
 
-Web Application Demo running React, Redux and Fluent Web you may find [on my GitHub](./code/)
+You can find a demo web application built with React, Redux, and Fluent Web [on my GitHub](./code/).
 
-### React Redux
+### React and Redux
 
 React is [the library for web and native user interfaces](https://react.dev/learn).
-Originally react components representing blocks HTML were designed as OOP.
-Modern React is made as functional programming comopnets.
+Originally, React components representing blocks of HTML were written as classes.
+Modern React favors function components.
 
 ``` jsx
 
@@ -81,7 +81,7 @@ export default function MyApp() {
 
 ```
 
-In our demo app and productional services we are extracting State Logic into a [Reducer](https://react.dev/learn/extracting-state-logic-into-a-reducer).
+In our demo app and production services, we extract state logic into a [reducer](https://react.dev/learn/extracting-state-logic-into-a-reducer).
 
 Components with many state updates spread across many event handlers can get overwhelming. For these cases, you can consolidate all the state update logic outside your component in a single function, called a reducer.
 
@@ -92,14 +92,15 @@ export function updateIndexModel(model: IndexModel, action: IndexAction): IndexM
 
 ```
 
-We need to model state and for this purposes we will use methodology from [Domain Modeling Made Functional](https://www.amazon.com/dp/1680502549/?bestFormat=true&k=domain+modeling+made+functional)
+We need to model state, and for this purpose, we'll use the methodology from [Domain Modeling Made Functional](https://www.amazon.com/dp/1680502549/?bestFormat=true&k=domain+modeling+made+functional).
 
 ![](./assets/domain_modeling_made_functional.png)
 
-Fomain programming modelling approach assumes using algebraic data types using Record Types and Descrimination Unions.
+This functional approach to domain modeling uses algebraic data types, such as record types and discriminated unions.
 
-Let's consider Record types on Type Script, F# and Rust
-**Type Script**
+Let's look at record types in TypeScript, F#, and Rust.
+
+**TypeScript**
 ``` ts
 type IndexModel = {
     initializable: IndexInitialization,
@@ -126,9 +127,9 @@ type IndexModel = {
 };
 ```
 
-Let's consider Descrimination Union types on Type Script, F# and Rust
+Let's look at discriminated union types in TypeScript, F#, and Rust.
 
-**Type Script**
+**TypeScript**
 ``` ts
 type IndexInitialization =
     | { state: 'Initializing', version: number }
@@ -153,7 +154,7 @@ enum IndexInitialization {
 }
 ```
 
-Let's declare type for initial application state:
+Let's declare a type for the application state:
 ``` ts
 type IndexModel = {
     initializable: IndexInitialization,
@@ -161,7 +162,7 @@ type IndexModel = {
     lastAction: string,
 }
 ```
-and method that constructs initial state prototype:
+and a function that constructs the initial state:
 ``` ts
 function getIndexModelInitial(): IndexModel {
     return {
@@ -172,9 +173,9 @@ function getIndexModelInitial(): IndexModel {
 }
 ```
 
-As mentioned above, for state modeling using **functional** approach we used record types and descrimination unions that are quite common practice cross Type Script, F# and Rust.
+As mentioned above, we use record types and discriminated unions to model state with a **functional** approach. These are common patterns across TypeScript, F#, and Rust.
 
-Howeve, for React Redux Action types we are using Type Script **class** that supports dynamic resolution
+However, for React Redux action types, we use TypeScript **classes**, which let us distinguish actions at runtime using `instanceof`.
 ``` ts
 export class ActionIndexInitializationRequested { }
 export class ActionIndexInitialized { constructor(public readonly value: InitializationData) { } }
@@ -186,7 +187,7 @@ export type IndexAction =
     | ActionIndexInitializationFailed
 ```
 
-And as result we can see reducer method from demo [IndexModel.ts](./code/src/IndexModel.ts)
+Putting this together, here's the reducer function from the demo's [IndexModel.ts](./code/src/IndexModel.ts):
 ``` ts
 export function updateIndexModel(model: IndexModel, action: IndexAction): IndexModel {
     const lastAction = action.constructor.name
@@ -205,41 +206,41 @@ export function updateIndexModel(model: IndexModel, action: IndexAction): IndexM
 }
 ```
 
-Using Reducers we can build quite complex UI as our demo:
+Using reducers, we can build fairly complex UIs, like the one in our demo:
 
 ![](./assets/main_screen_dark.png)
 
 ### Microsoft Fluent Web
 
-Microsoft `Office` organization (internally known as `M365` or just `Copilot` since 2026) is fast dynamic organization that standartized web development to use [Fluent Web](https://developer.microsoft.com/en-us/fluentui#/) and newer [Fluent Web 2](https://fluent2.microsoft.design/).
+Microsoft's `Office` organization (internally known as `M365` or just `Copilot` since 2026) is a fast-moving, dynamic organization that has standardized web development around [Fluent Web](https://developer.microsoft.com/en-us/fluentui#/) and the newer [Fluent Web 2](https://fluent2.microsoft.design/).
 
-Using design language is important because like a human language it contains nouns as components, verbs as interaction patters, adjectives as styles and typography. Now with AI we can create Web UI for our backend services in minutes and being able to get professional UI is great instrument.
+Using a design language is important because, like a human language, it has nouns (components), verbs (interaction patterns), and adjectives (styles and typography). Now, with AI, we can create web UIs for our backend services in minutes. Being able to give them a professional look and feel is a powerful capability.
 
 ### Fluent Web v8
-Microsoft Office organiztion open sourced Fluent Web framework used to build own UIs.
-I started using Fluent UI in 2019 and now that is on [deprecation path](https://developer.microsoft.com/en-us/fluentui#/controls/web) while I'm writing this article. 
-Again want to remind that I was looking at Fluent Web from my Windows UI development background and I was looking for patterns that would allow my service web portal look modern good consistent and accessible. It was great way Get Stargted with React, Typography, Theming, Styling (CSS in TypeScript) and reach Componets set.
+Microsoft's Office organization open-sourced the Fluent Web framework it used to build its own UIs.
+I started using Fluent UI in 2019, and as I write this article, v8 is on the [path to deprecation](https://developer.microsoft.com/en-us/fluentui#/controls/web).
+As I mentioned earlier, I approached Fluent Web with a background in Windows UI development. I was looking for patterns that would help me build a modern, polished, consistent, and accessible web portal for my service. It was a great way to get started with React, typography, theming, styling (CSS in TypeScript), and a rich set of components.
 
-It was good to see that components were organized including best practices and source code demonstrating different config options.
-For example [Search Box](https://developer.microsoft.com/en-us/fluentui#/controls/web/searchbox) component page contains Best practices: 
+It was good to see that the component documentation included best practices and source code demonstrating different configuration options.
+For example, the [Search Box](https://developer.microsoft.com/en-us/fluentui#/controls/web/searchbox) component page includes best practices and examples:
 * Layout: `Don't build a custom search control based on the default text box or any other control.`
 * Content: `Use placeholder text in the search box to describe what people can search for. For example, "Search", "Search files", or "Search contacts list".`
 * Samples: `Web: Search a web index. Results include pages, entities, and answers.`
-* Theme: to watch how component looks like in Dark and Light.
-* Show code: type script source code to copy/paste sample before AI appeared.
+* Theme: see how the component looks in dark and light themes.
+* Show code: TypeScript source code you could copy and paste into your app before AI tools became available.
 
 ![](./assets/fluent_web_v8_search.png)
 
 ### Fluent v2 (Fluent Web v9)
 
-All modern Office products are using using Fluent Web v9 which is open-sourced as well.
-Fluent Web v9 is slimer, faster and generally perspectively organized.
-* https://fluent2.microsoft.design/ - portal introduces you to key concepts and inspire to start creating.
-* https://github.com/microsoft/fluentui - contains source materials and video trainings.
-* https://storybooks.fluentui.dev/react/ - catalog of components with Best practices included.
+All modern Office products use Fluent Web v9, which is also open source.
+Fluent Web v9 is slimmer, faster, and generally better organized.
+* https://fluent2.microsoft.design/ - a portal that introduces key concepts and inspires you to start creating.
+* https://github.com/microsoft/fluentui - source materials and training videos.
+* https://storybooks.fluentui.dev/react/ - a component catalog that includes best practices.
 
 ## Conclusion
 
-Building UI as well as anything that human interacts with, begins from curiousity, even when AI can generate lots, we need to learn and care about fundamentals to build complex things. 
+Building UIs, like building anything people interact with, begins with curiosity. Even when AI can generate so much, we still need to learn and care about the fundamentals to build complex things.
 
 "Design is not just what it looks like and feels like. Design is how it works." (Steve Jobs)
