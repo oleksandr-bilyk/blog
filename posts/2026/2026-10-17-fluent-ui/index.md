@@ -2,7 +2,7 @@
 
 ## Woodworking
 
-My father was a gifted craftsman, part of a generation of people who could do everything from building a house to tinkering with electronics. From a young age, he inspired me with his high-quality woodworking. My father taught me that craftsmanship becomes valuable through attention to detail. I remember opening a book about woodworking and finding that the first chapter was about keeping the workbench clean and tools sharp.
+My father a gifted craftsman, part of a generation of people who could do everything from building a house to tinkering with electronics. From a young age, he inspired me with his high-quality woodworking. My father taught me that craftsmanship becomes valuable through attention to detail. I remember opening a book about woodworking and finding that the first chapter was about keeping the workbench clean and tools sharp.
 
 ![Woodworking](./assets/woodworks.png)
 
@@ -213,6 +213,18 @@ Using Reducers we can build quite complex UI as our demo:
 
 Microsoft `Office` organization (internally known as `M365` or just `Copilot` since 2026) is fast dynamic organization that standartized web development to use [Fluent Web](https://developer.microsoft.com/en-us/fluentui#/) and newer [Fluent Web 2](https://fluent2.microsoft.design/).
 
-Using design language is important because 
+Using design language is important because like a human language it contains nouns as components, verbs as interaction patters, adjectives as styles and typography. Now with AI we can create Web UI for our backend services in minutes and being able to get professional UI is great instrument.
 
-// TODO: finish the article
+Microsoft Office organiztion open sourced Fluent Web framework used to build own UIs.
+I started using Fluent UI in 2019 and now that is on [deprecation path](https://developer.microsoft.com/en-us/fluentui#/controls/web) while I'm writing this article. 
+Again want to remind that I was looking at Fluent Web from my Windows UI development background and I was looking for patterns that would allow my service web portal look modern good consistent and accessible. It was great way Get Stargted with React, Typography, Theming, Styling (CSS in TypeScript) and reach Componets set.
+
+It was good to see that components were organized including best practices and source code demonstrating different config options.
+For example [Search Box](https://developer.microsoft.com/en-us/fluentui#/controls/web/searchbox) component page contains Best practices: 
+* Layout: `Don't build a custom search control based on the default text box or any other control.`
+* Content: `Use placeholder text in the search box to describe what people can search for. For example, "Search", "Search files", or "Search contacts list".`
+* Samples: `Web: Search a web index. Results include pages, entities, and answers.`
+* Theme: to watch how component looks like in Dark and Light.
+* Show code: type script source code to copy/paste sample before AI appeared.
+
+![](./assets/fluent_web_v8_search.png)
