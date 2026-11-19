@@ -14,6 +14,8 @@ My professional [100+ book list at Goodreads](https://www.goodreads.com/review/l
 
 ### 2026
 
+* [Event Sourcing - Learning Materials and Domain Modeling Made Functional](./posts/2026/2026-11-19-event-sourcing-101/)
+
 * [A Platform and Standards for Your Greenfield Project](./posts/2026/2026-11-15-platform-standards-grienfield-ai/index.md)
 
 * [AI instructions: Clean Crchitecture with Functional Core on F# programming langage](./posts/2026/2026-11-10-fsharp-clean-architecture-ai/index.md)
