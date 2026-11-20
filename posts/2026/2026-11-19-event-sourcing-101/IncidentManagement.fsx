@@ -156,87 +156,67 @@ module Commands =
             [] // ignoring because incident does not exist
 
     
-
-module Tests =
-    type TestCase = {
-        Name: string
-        Test: unit -> unit
+let ``incident created``() =
+    let events = [
+        Events.Created {
+            Title = "Incident 1"
+            Description = "Description of Incident 1"
+            Severity = Semi.IncidentSeverity.High
+        }
+    ]
+    let stateActual = events |> List.fold State.evolve None
+    let stateExpected: State.IncidentView option = Some {
+        Title = "Incident 1"
+        Description = "Description of Incident 1"
+        Severity = Semi.IncidentSeverity.High
+        Status = State.Status.Active
+        AcknowledgedBy = None
+        Comments = []
     }
 
-    let testCases =
-        [
-            {
-                Name = "incident created"
-                Test = fun () ->
-                    let events = [
-                        Events.Created {
-                            Title = "Incident 1"
-                            Description = "Description of Incident 1"
-                            Severity = Semi.IncidentSeverity.High
-                        }
-                    ]
-                    let stateActual = events |> List.fold State.evolve None
-                    let stateExpected: State.IncidentView option = Some {
-                        Title = "Incident 1"
-                        Description = "Description of Incident 1"
-                        Severity = Semi.IncidentSeverity.High
-                        Status = State.Status.Active
-                        AcknowledgedBy = None
-                        Comments = []
-                    }
+    assert (stateActual = stateExpected) 
 
-                    assert (stateActual = stateExpected)              
-            }
+let ``incident created and mitigated``() =
+    let events = [
+        Events.Created {
+            Title = "Incident 1"
+            Description = "Description of Incident 1"
+            Severity = Semi.IncidentSeverity.High
+        }
+        Events.Mitigated {
+            Comment = "Mitigated"
+        }
+    ]
+    let stateActual = events |> List.fold State.evolve None
+    let stateExpected: State.IncidentView option = Some {
+        Title = "Incident 1"
+        Description = "Description of Incident 1"
+        Severity = Semi.IncidentSeverity.High
+        Status = State.Status.Mitigated
+        AcknowledgedBy = None
+        Comments = []
+    }
 
-            {
-                Name = "incident created and mitigated"
-                Test = fun () ->
-                    let events = [
-                        Events.Created {
-                            Title = "Incident 1"
-                            Description = "Description of Incident 1"
-                            Severity = Semi.IncidentSeverity.High
-                        }
-                        Events.Mitigated {
-                            Comment = "Mitigated"
-                        }
-                    ]
-                    let stateActual = events |> List.fold State.evolve None
-                    let stateExpected: State.IncidentView option = Some {
-                        Title = "Incident 1"
-                        Description = "Description of Incident 1"
-                        Severity = Semi.IncidentSeverity.High
-                        Status = State.Status.Mitigated
-                        AcknowledgedBy = None
-                        Comments = []
-                    }
+    assert (stateActual = stateExpected)  
 
-                    assert (stateActual = stateExpected)              
-            }
+let ``command to create incident``() =
+    let command = Commands.Create {
+        Title = "Incident 1"
+        Description = "Description of Incident 1"
+        Severity = Semi.IncidentSeverity.High
+    }
+    let stateOritinal = None
+    let eventsActual = Commands.decide command stateOritinal
+    let eventsExpected = [
+        Events.Created {
+            Title = "Incident 1"
+            Description = "Description of Incident 1"
+            Severity = Semi.IncidentSeverity.High
+        }
+    ]
 
-            {
-                Name = "command to create incident"
-                Test = fun () ->
-                    let command = Commands.Create {
-                        Title = "Incident 1"
-                        Description = "Description of Incident 1"
-                        Severity = Semi.IncidentSeverity.High
-                    }
-                    let stateOritinal = None
-                    let eventsActual = Commands.decide command stateOritinal
-                    let eventsExpected = [
-                        Events.Created {
-                            Title = "Incident 1"
-                            Description = "Description of Incident 1"
-                            Severity = Semi.IncidentSeverity.High
-                        }
-                    ]
+    assert (eventsActual = eventsExpected)
 
-                    assert (eventsActual = eventsExpected)              
-            }
-        ]
-
-// run tests
-for testCase in Tests.testCases do
-    printfn "Running test: %s" testCase.Name
-    testCase.Test()
+``incident created``()
+``incident created and mitigated``()
+``command to create incident``()
