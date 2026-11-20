@@ -1,4 +1,4 @@
-# Event Sourcing - Learning Materials and Domain Modeling Made Functional
+# Event Sourcing Functional on F# and Rust
 
 Pros and cons of Event Sourcing according to lerning materials listed below:
 ## Reasons to use Event Sourcing and CQRS
