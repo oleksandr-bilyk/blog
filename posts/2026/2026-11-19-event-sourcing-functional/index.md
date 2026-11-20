@@ -283,28 +283,39 @@ pub mod state {
 
     pub fn evolve(state: Option<IncidentView>, event: Event) -> Option<IncidentView> {
         match (state, event) {
-            (Some(mut state), event) => {
-                match event {
-                    Event::Resolved { .. } => state.status = Status::Resolved,
-                    Event::Mitigated { .. } => state.status = Status::Mitigated,
-                    Event::SeverityChanged(severity) => state.severity = severity,
-                    Event::Acknowledged { user } => state.acknowledged_by = Some(user),
-                    Event::CommentAdded {
+            (Some(state), event) => Some(match event {
+                Event::Resolved { .. } => IncidentView {
+                    status: Status::Resolved,
+                    ..state
+                },
+                Event::Mitigated { .. } => IncidentView {
+                    status: Status::Mitigated,
+                    ..state
+                },
+                Event::SeverityChanged(severity) => IncidentView {
+                    severity,
+                    ..state
+                },
+                Event::Acknowledged { user } => IncidentView {
+                    acknowledged_by: Some(user),
+                    ..state
+                },
+                Event::CommentAdded {
+                    user,
+                    date_time_utc,
+                    text,
+                } => IncidentView {
+                    comments: std::iter::once(CommentItem {
                         user,
                         date_time_utc,
                         text,
-                    } => state.comments.insert(
-                        0,
-                        CommentItem {
-                            user,
-                            date_time_utc,
-                            text,
-                        },
-                    ),
-                    Event::Created { .. } => {}
-                }
-                Some(state)
-            }
+                    })
+                    .chain(state.comments.into_iter())
+                    .collect(),
+                    ..state
+                },
+                Event::Created { .. } => state,
+            }),
             (
                 None,
                 Event::Created {
