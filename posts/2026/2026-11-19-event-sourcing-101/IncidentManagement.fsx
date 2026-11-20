@@ -14,36 +14,13 @@ module Events =
         Severity: Semi.IncidentSeverity
     }
 
-    type EventResolvedDetails = {
-        Comment: string
-    }
-    
-    type EventMitigatedDetails = {
-        Comment: string
-    }
-    
-    type EventAcknowledgedDetails = {
-        User: string
-    }
-
-    type EventCommentAddedDetails = {
-        User: string
-        Text: string
-    }
-
-    type EventCommendAddedDetails = {
-        User: string
-        DateTimeUtc: DateTime
-        Text: string
-    }
-
     type Event =
         | Created of EventCreatedDetails
-        | Resolved of EventResolvedDetails
-        | Mitigated of EventMitigatedDetails
+        | Resolved of {| Comment: string |}
+        | Mitigated of {| Comment: string |}
         | SeverityChanged of Semi.IncidentSeverity
-        | Acknowledged of EventAcknowledgedDetails
-        | CommentAdded of EventCommendAddedDetails
+        | Acknowledged of {| User: string |}
+        | CommentAdded of {| User: string; DateTimeUtc: DateTime; Text: string |}
 
 module State =
     
@@ -99,36 +76,14 @@ module State =
         | None, _ -> failwith "Incident not created"
 
 module Commands =
-    type CommandsCreateDetails = {
-        Title: string
-        Description: string
-        Severity: Semi.IncidentSeverity
-    }
-
-    type CommandsResolveDetails = {
-        Comment: string
-    }
-    
-    type CommandsMitigateDetails = {
-        Comment: string
-    }
-    
-    type CommandsAcknowledgeDetails = {
-        User: string
-    }
-
-    type CommandsAddCommentDetails = {
-        User: string
-        Text: string
-    }
 
     type Command =
-        | Create of CommandsCreateDetails
-        | Resolve of CommandsResolveDetails
-        | Mitigate of CommandsMitigateDetails
+        | Create of {| Title: string; Description: string; Severity: Semi.IncidentSeverity |}
+        | Resolve of {| Comment: string |}
+        | Mitigate of {| Comment: string |}
         | ChangeSeverity of Semi.IncidentSeverity
-        | Acknowledge of CommandsAcknowledgeDetails
-        | AddComment of CommandsAddCommentDetails
+        | Acknowledge of {| User: string |}
+        | AddComment of {| User: string; Text: string |}
 
     let decide(command: Command) (state: State.IncidentView option): Events.Event list =
         match command, state with
@@ -143,15 +98,15 @@ module Commands =
             match command with
             | Create _ -> [] // ignoring because incident is already created
             | Resolve details -> 
-                [ Events.Resolved { Comment = details.Comment } ]
+                [ Events.Resolved {| Comment = details.Comment |} ]
             | Mitigate details -> 
-                [ Events.Mitigated { Comment = details.Comment } ]
+                [ Events.Mitigated {| Comment = details.Comment |} ]
             | ChangeSeverity severity -> 
                 [ Events.SeverityChanged severity ]
             | Acknowledge details -> 
-                [ Events.Acknowledged { User = details.User } ]
+                [ Events.Acknowledged {| User = details.User |} ]
             | AddComment details -> 
-                [ Events.CommentAdded { User = details.User; DateTimeUtc = System.DateTime.UtcNow; Text = details.Text } ]
+                [ Events.CommentAdded {| User = details.User; DateTimeUtc = System.DateTime.UtcNow; Text = details.Text |} ]
         | command, None -> 
             [] // ignoring because incident does not exist
 
@@ -183,9 +138,7 @@ let ``incident created and mitigated``() =
             Description = "Description of Incident 1"
             Severity = Semi.IncidentSeverity.High
         }
-        Events.Mitigated {
-            Comment = "Mitigated"
-        }
+        Events.Mitigated {| Comment = "Mitigated" |}
     ]
     let stateActual = events |> List.fold State.evolve None
     let stateExpected: State.IncidentView option = Some {
@@ -200,11 +153,11 @@ let ``incident created and mitigated``() =
     assert (stateActual = stateExpected)  
 
 let ``command to create incident``() =
-    let command = Commands.Create {
+    let command = Commands.Create {|
         Title = "Incident 1"
         Description = "Description of Incident 1"
         Severity = Semi.IncidentSeverity.High
-    }
+    |}
     let stateOritinal = None
     let eventsActual = Commands.decide command stateOritinal
     let eventsExpected = [
